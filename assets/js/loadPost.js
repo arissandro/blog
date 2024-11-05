@@ -1,7 +1,7 @@
 async function loadPost() {
     const postId = new URLSearchParams(window.location.search).get('id');
-
-    const response = await fetch('posts/posts.json'); // Verifique se o caminho está correto
+    
+    const response = await fetch('posts/posts.json'); // Certifique-se do caminho
     const posts = await response.json();
 
     const post = posts.find(p => p.id == postId);
@@ -31,14 +31,14 @@ async function loadPost() {
         const nextPost = posts[postIndex + 1];
 
         if (prevPost) {
-            document.getElementById('prev-post').href = `/blog/post-page.html?id=${prevPost.id}`; // Incluindo o nome do repositório
+            document.getElementById('prev-post').href = `post.html?id=${prevPost.id}`;
             document.getElementById('prev-post').textContent = prevPost.title;
         } else {
             document.getElementById('prev-post').style.display = 'none';
         }
 
         if (nextPost) {
-            document.getElementById('next-post').href = `/blog/post-page.html?id=${nextPost.id}`; // Incluindo o nome do repositório
+            document.getElementById('next-post').href = `post.html?id=${nextPost.id}`;
             document.getElementById('next-post').textContent = nextPost.title;
         } else {
             document.getElementById('next-post').style.display = 'none';
@@ -46,5 +46,4 @@ async function loadPost() {
     }
 }
 
-// Carregar o post ao iniciar a página
 loadPost();

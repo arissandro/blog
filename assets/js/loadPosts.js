@@ -1,6 +1,6 @@
 async function loadPosts() {
     try {
-        const response = await fetch('posts/posts.json'); // Este caminho deve estar correto
+        const response = await fetch('posts/posts.json'); // Certifique-se do caminho
         const posts = await response.json();
         const postsContainer = document.getElementById('posts-container');
 
@@ -8,7 +8,7 @@ async function loadPosts() {
             const postElement = document.createElement('div');
             postElement.className = 'post-preview';
             postElement.innerHTML = `
-                <h2><a href="/blog/post-page.html?id=${post.id}">${post.title}</a></h2> <!-- Incluindo o nome do repositório -->
+                <h2><a href="post.html?id=${post.id}">${post.title}</a></h2>
                 <p><em>${post.date}</em></p>
                 <img src="${post.image}" alt="${post.title}" />
                 <p>${post.content[0].text.slice(0, 100)}...</p>
