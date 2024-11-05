@@ -1,0 +1,21 @@
+:root {
+    /* Cores Básicas */
+    --container-color: #0f0f0f;    /* Fundo estilo terminal */
+    --second-color: #39ff14;       /* Verde neon vibrante */
+    --text-color: #66d9ef;         /* Azul-ciano para texto */
+    --bg-color: #1a1a1a;           /* Fundo geral escuro */
+    --font-primary: 'Roboto Mono', monospace; /* Fonte monoespaçada */
+    --font-secondary: 'Press Start 2P', cursive; /* Fonte estilo arcade */
+    
+    /* Cor de Título */
+    --title-color: #00ff99;        /* Verde neon claro para títulos */
+
+    /* Outras cores para elementos (botões, links, sombras) */
+    --button-bg: #333333;
+    --button-text: #39ff14;
+    --button-hover-bg: #1c1c1c;
+    --button-hover-text: #ffffff;
+    --link-color: #66d9ef;
+    --link-hover-color: #39ff14;
+    --shadow-color: rgba(57, 255, 20, 0.3);
+}

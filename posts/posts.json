@@ -1,0 +1,28 @@
+[
+    {
+        "id": 1,
+        "title": "Como criar o melhor UX Design usando Adobe",
+        "date": "2024-11-05",
+        "category": "Design",
+        "image": "img/post-1.jpg",
+        "content": [
+            {
+                "heading": "Create a Best UX Design",
+                "text": "Lorem ipsum... Visite o site do <a href='https://www.adobe.com'>Adobe</a>."
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Melhores práticas de JavaScript",
+        "date": "2024-11-06",
+        "category": "Desenvolvimento",
+        "image": "img/post-2.jpg",
+        "content": [
+            {
+                "heading": "Dicas de JavaScript",
+                "text": "Lorem ipsum... Leia mais sobre <a href='https://developer.mozilla.org/pt-BR/docs/Web/JavaScript'>JavaScript</a>."
+            }
+        ]
+    }
+]
