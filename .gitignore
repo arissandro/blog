@@ -88,3 +88,7 @@ Thumbs.db
 # GitHub
 .github/
 dependabot.yml
+
+# Ignora arquivos de configuração
+config/settings.yml
+.env
