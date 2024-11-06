@@ -1,1 +1,15 @@
-[]
+[
+    {
+        "id": "1911469d-96b4-4319-85fd-88719d2603fe",
+        "title": "arissandro",
+        "date": "2024-11-05 23:54:06",
+        "content": [
+            {
+                "text": "testando um poste novo"
+            }
+        ],
+        "link": "/postes/arissandro.html",
+        "category": "Sem categoria",
+        "image": "img/default.jpg"
+    }
+]
