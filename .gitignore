@@ -92,3 +92,7 @@ dependabot.yml
 # Ignora arquivos de configuração
 config/settings.yml
 .env
+
+config/posts.json
+config/criapagina.py
+
