@@ -1,6 +1,6 @@
 async function loadPosts() {
     try {
-        const response = await fetch('postes/postes.json'); // Carregar JSON dos posts
+        const response = await fetch('../postes/postes.json'); // Carregar JSON dos posts
         if (!response.ok) {
             throw new Error('Erro ao carregar os posts.');
         }
