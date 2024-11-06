@@ -1,0 +1,46 @@
+/* Estilo para o footer */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 1rem;
+    position: relative; /* Rodapé com posição normal */
+    bottom: 0; /* Não é mais necessário, mas mantém para consistência */
+    left: 0; /* Alinha o footer à esquerda */
+    width: 100%; /* Garante que o footer ocupe toda a largura da tela */
+    z-index: 1000; /* Garante que o footer fique acima de outros elementos */
+}
+
+/* Alinha o conteúdo dentro do footer */
+.footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Estilo para o texto do footer */
+.footer p {
+    margin: 0;
+    font-size: 1rem;
+    color: #ddd;
+}
+
+/* Estilo para os links sociais */
+.footer .social a {
+    display: inline-block;
+    margin: 10px;
+    color: #fff;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.footer .social a:hover {
+    color: #0077b5;
+}
+
+.footer .social i {
+    vertical-align: middle;
+}
