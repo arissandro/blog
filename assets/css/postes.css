@@ -1,198 +1,64 @@
-/* Container principal do post */
+/* Estilo para a seção da postagem */
+.post-section {
+    position: relative; /* Para a posição absoluta do canvas */
+    height: 100vh; /* A altura da tela inteira */
+    overflow: hidden;
+}
+
+/* Canvas que gera o fundo dinâmico */
+#matrix {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Estilo para o contêiner da postagem */
 .post-container {
-    max-width: 800px;
-    margin: 40px auto;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centraliza o conteúdo */
+    background: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente */
     padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    border: 1px solid #e0e0e0;
-    display: flex;
-    flex-direction: column;
+    width: 80%;
+    max-width: 800px; /* Aumenta a largura do contêiner */
+    text-align: center;
+    color: white;
+    z-index: 1; /* Garante que o conteúdo fique acima do fundo */
 }
 
-/* Título do post */
+/* Estilo para o título da postagem */
 .post-title {
-    font-size: 2.5em;
-    font-family: 'Merriweather', serif;
+    font-size: 3rem;
     font-weight: bold;
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
+    margin: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
-/* Metadados do post */
-.post-meta {
-    font-size: 1em;
-    color: #999;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* Tags */
-.post-tags {
-    font-size: 1em;
-    color: #555;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* Imagem principal do post */
-.post-image {
-    max-width: 100%;
-    height: auto;
-    margin: 30px 0;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Introdução */
-.post-intro {
-    font-size: 1.2em;
-    color: #555;
-    text-align: justify;
-    margin-bottom: 30px;
-}
-
-/* Conteúdo do post */
+/* Estilo para o conteúdo da postagem */
 .post-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-.post-content h2 {
-    font-size: 2em;
-    font-family: 'Merriweather', serif;
-    color: #34495e;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    text-align: center;
-}
-.post-content p {
-    font-size: 1.1em;
-    line-height: 1.6;
-    margin: 15px 0;
-    color: #666;
-    text-align: justify;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #fff;
+    margin: 20px 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: 100%;
 }
 
-/* Seção do autor */
-.author {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    padding: 15px;
-    background: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    justify-content: flex-start;
-}
-.author-image {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    margin-right: 20px;
-    border: 3px solid #3498db;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-.author-info {
-    flex: 1;
-}
-.author-name {
-    font-size: 1.4em;
-    font-weight: bold;
-    color: #2c3e50;
-}
-.author-bio {
-    font-size: 1em;
-    color: #666;
-    margin-top: 10px;
-}
-.author-link {
-    font-size: 1em;
-    color: #3498db;
-    text-decoration: none;
-    margin-right: 10px;
-    transition: color 0.3s ease;
-}
-.author-link:hover {
-    color: #2c3e50;
-}
-
-/* Posts relacionados */
-.related-posts {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-.related-posts h3 {
-    font-size: 1.8em;
-    margin-bottom: 15px;
-    text-align: center;
-    color: #34495e;
-}
-.related-posts ul {
-    list-style: none;
-    padding: 0;
-    text-align: center;
-}
-.related-posts li {
-    font-size: 1.2em;
+/* Estilo para a data da postagem */
+.post-date {
+    font-size: 1rem;
+    color: #bbb;
     margin: 10px 0;
 }
-.related-posts li a {
-    color: #3498db;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-.related-posts li a:hover {
-    color: #2c3e50;
-}
 
-/* Comentários */
-.comments {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-}
-.comments h3 {
-    font-size: 1.8em;
-    color: #34495e;
-    margin-bottom: 20px;
-    text-align: center;
-}
-.comments ul {
-    list-style: none;
-    padding: 0;
-}
-.comments li {
-    border-bottom: 1px solid #ddd;
-    padding: 15px 0;
-    font-size: 1.1em;
-}
-.comments .comment-user {
-    font-weight: bold;
-    color: #2c3e50;
-}
-.comments .comment-date {
-    font-size: 0.9em;
-    color: #999;
-}
-.comments p {
-    margin: 5px 0;
-    color: #666;
-}
-
-/* Estilo geral para links no post */
-a {
-    color: #3498db;
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
+/* Estilo para a categoria da postagem */
+.post-category {
+    font-size: 1rem;
+    color: #ccc;
 }

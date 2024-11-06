@@ -1,67 +1,102 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hreff</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="stylesheet" href="/assets/css/reset.css">
-    <link rel="stylesheet" href="/assets/css/root.css">
-    <link rel="stylesheet" href="/assets/css/matrix.css">
-    <link rel="stylesheet" href="/assets/css/responsiv.css">
-    <link rel="stylesheet" href="/assets/css/header.css">
-    <link rel="stylesheet" href="/assets/css/home.css">
-    <link rel="stylesheet" href="/assets/css/home-post-filter.css">
-    <link rel="stylesheet" href="/assets/css/home-post.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-</head>
-<body>
-    <header class="header">
-        <a href="#" class="header-title">H<span>reff</span>.</a>
-        <div class="header-container">
-            <nav class="header-container-menu">
-                <ul class="header-conatiner-menu-list">
-                    <li class="header-conatiner-menu-list-item"><a href="#" class="header-conatiner-menu-list-item-link">exemplo</a></li>
-                    <li class="header-conatiner-menu-list-item"><a href="#" class="header-conatiner-menu-list-item-link">exemplo</a></li>
-                    <li class="header-conatiner-menu-list-item"><a href="#" class="header-conatiner-menu-list-item-link">exemplo</a></li>
-                    <li class="header-conatiner-menu-list-item"><a href="#" class="header-conatiner-menu-list-item-link">exemplo</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <section class="home" id="home">
-        <canvas id="matrix"></canvas>
-        <div class="home-text container">
-            <h2 class="home-title">Loading.sh</h2>
-            <span class="home-subtitle">"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim quidem est exercitationem voluptatibus facere sed, fugit veniam architecto temporibus. Aliquam amet porro commodi quod iusto, dicta magni natus blanditiis quibusdam." by - lorem</span>
-        </div>
-    </section>
-
-    <div class="post-filter container">
-        <span class="filter-item active-filter" data-filter='blue'>blue</span>
-        <span class="filter-item" data-filter='red'>red</span>
-    </div>
-
-    <section id="posts-container" class="posts-container">
-        <!-- Os posts serão carregados aqui -->
-    </section>
-
-    <div class="footer container">
-        <p>&#169; Compila All Right Reserved</p>
-        <div class="social">
-            <a href="https://compilanews.com" alt="compilanews.com" target="_blank"><i class='bx bxl-linkedin'></i></a>
-            <a href="https://compilanews.com" alt="compilanews.com" target="_blank"><i class='bx bxl-instagram'></i></a>
-            <a href="https://compilanews.com" alt="compilanews.com" target="_blank"><i class='bx bxl-facebook'></i></a>
-            <a href="https://compilanews.com" alt="compilanews.com" target="_blank"><i class='bx bxl-twitter'></i></a>
-            <a href="https://compilanews.com" alt="compilanews.com" target="_blank"><i class='bx bxl-github'></i></a>
-        </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
-    <script src="/assets/js/main.js"></script>
-    <script src="/assets/js/matrix.js"></script>
-    <script src="loadPosts.js"></script>
-</body>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Hreff
+  </title>
+  <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+  <link href="/assets/css/reset.css" rel="stylesheet"/>
+  <link href="/assets/css/root.css" rel="stylesheet"/>
+  <link href="/assets/css/matrix.css" rel="stylesheet"/>
+  <link href="/assets/css/responsiv.css" rel="stylesheet"/>
+  <link href="/assets/css/footer.css" rel="stylesheet"/>
+  <link href="/assets/css/header.css" rel="stylesheet"/>
+  <link href="/assets/css/home.css" rel="stylesheet"/>
+  <link href="/assets/css/home-post-filter.css" rel="stylesheet"/>
+  <link href="/assets/css/home-post.css" rel="stylesheet"/>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header class="header">
+   <a class="header-title" href="#">
+    H
+    <span>
+     reff
+    </span>
+    .
+   </a>
+   <div class="header-container">
+    <nav class="header-container-menu">
+     <ul class="header-conatiner-menu-list">
+      <li class="header-conatiner-menu-list-item">
+       <a class="header-conatiner-menu-list-item-link" href="#">
+        exemplo
+       </a>
+      </li>
+      <li class="header-conatiner-menu-list-item">
+       <a class="header-conatiner-menu-list-item-link" href="#">
+        exemplo
+       </a>
+      </li>
+      <li class="header-conatiner-menu-list-item">
+       <a class="header-conatiner-menu-list-item-link" href="#">
+        exemplo
+       </a>
+      </li>
+      <li class="header-conatiner-menu-list-item">
+       <a class="header-conatiner-menu-list-item-link" href="#">
+        exemplo
+       </a>
+      </li>
+     </ul>
+    </nav>
+   </div>
+  </header>
+  <section class="home" id="home">
+   <canvas id="matrix">
+   </canvas>
+   <div class="home-text container">
+    <h2 class="home-title">
+     Loading.sh
+    </h2>
+    <span class="home-subtitle">
+     "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim quidem est
+                exercitationem voluptatibus facere sed, fugit veniam architecto temporibus. Aliquam amet porro commodi
+                quod iusto, dicta magni natus blanditiis quibusdam." by - lorem
+    </span>
+   </div>
+  </section>
+  <div class="post-filter container">
+   <span class="filter-item active-filter" data-filter="blue">
+    blue
+   </span>
+   <span class="filter-item" data-filter="red">
+    red
+   </span>
+  </div>
+  <section class="posts-container" id="posts-container">
+  </section>
+  <footer class="footer container">
+   <p>
+    © Compila All Right Reserved
+   </p>
+   <div class="social">
+    <a alt="compilanews.com" href="https://compilanews.com" target="_blank">
+     <i class="bx bxl-linkedin">
+     </i>
+    </a>
+   </div>
+  </footer>
+  <script crossorigin="anonymous" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" src="https://code.jquery.com/jquery-3.6.1.js">
+  </script>
+  <script src="/assets/js/main.js">
+  </script>
+  <script src="/assets/js/matrix.js">
+  </script>
+  <script src="/assets/js/limitePost.js">
+  </script>
+ </body>
 </html>
