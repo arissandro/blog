@@ -1,118 +1,34 @@
-/*Responsive*/
-@media (max-width:1060px){
-    .container{
-        margin: 0 auto;
-        width: 95%;
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    /* Ocultar o menu no modo mobile */
+    .header-container-menu {
+        display: none;
     }
-    .home-text{
-        width: 100%;
-    }
-}
 
-@media (max-width:800px){
-    .nav{
-        padding: 14px 0;
+    /* Ajustar a seção "home" */
+    .home-title {
+        font-size: 1.5rem;
     }
-    .post-container{
-        margin: 0 auto;
-        width: 95%;
-    }
-}
 
-@media (max-width:768px){
-    .nav{
-      padding: 10px 0;
+    .home-subtitle {
+        font-size: 1rem;
     }
-    section{
-        padding: 2rem 0;
-    }
-    .header-content{
-        margin-top: 3rem !important ;
-    }
-    .home{
-        min-height: 380px;
-    }
-    .home-title{
-        font-size: 3rem;
-    }
-    .header-title{
-        font-size: 2rem;
-    }
-    .header-img{
-        height: 370px;
-    }
-    .post-header{
-        height: 435px;
-    }
-    .post-content{
-        margin-top: 9rem !important;
-    }
-}
 
-@media (max-width: 570px){
-    .post-header{
-        height: 390px;
-    }
-    .header-title{
-        width: 100%;
-    }
-    .header-img{
-        height: 340px;
-    }
-    .footer{
+    /* Ajustar o filtro e os posts */
+    .post-filter {
         flex-direction: column;
-        row-gap: 1rem;
-        padding: 20px 0;
-        text-align: center;
+        align-items: center;
     }
-}
 
-@media (max-width: 396px){
-    .home-title{
-        font-size: 2rem;
-    }
-    .home-subtitle{
-        font-size: 0.9rem;
-    }
-    .home{
-        min-height: 300px;
-    }
-    .post-box{
+    .posts-container {
         padding: 10px;
     }
-    .header-title{
+
+    .post-title {
         font-size: 1.4rem;
     }
-    .header-img{
-        height: 240px;
-    }
-    .post-header{
-        height: 335px;
-    }
-    .post-content{
-        margin-top: 5rem !important;
-    }
-    .post-text{
-        font-size: 0.875rem;
-        line-height: 1.5rem;
-        margin: 10px 0;
-    }
-}
 
-
-@media (max-width:767px) {
-    /* de 0px até 767px */
-    #matrix{
-        width: 100vw;
+    .post-content {
+        font-size: 0.9rem;
     }
-}
-@media (min-width:768px) and (max-width: 992px) {
-    /* de 768px até 992px*/
-    #matrix{
-        width: 100vw;
-    }
-}
-@media (min-width:992px) {
-    /* acima de 992px */
-    /* ... */
 }

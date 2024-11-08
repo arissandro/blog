@@ -1,38 +1,41 @@
 @import url("/assets/css/root.css");
 .home {
-    position: relative; 
-    height: 50vh; 
+
+    height: 25vh;
+    max-height: 30vh; 
+    width: 100vw;
+    background-color: black;
+    box-sizing: border-box;
     overflow: hidden;
     
 }
 
-#matrix {
-    position: absolute; 
-    top: 0;
-    left: 0;
-    width: 100%; 
-    height: 100%; 
+.home-container{
+    align-items: center;
+    padding: 24px 0;
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
 }
 
-.home-text {
-    position: absolute; 
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    color: var(--second-color); 
-    text-align: center; 
-    z-index: 1;
-}
 
 .home-title {
+    color: var(--second-color);
     font-family: var(--font-primary);
-    font-size: 3rem; 
+    font-size: 1.5rem; 
     font-weight: bold; 
-    margin-bottom: 15px; 
+    align-items: center;
+    text-align: center;
+
 }
 
 .home-subtitle {
+    text-align: center;
     font-family: var(--font-secondary);
-    font-size: 1rem; 
+    font-size: .9rem; 
     color: var(--shadow-color); 
 }

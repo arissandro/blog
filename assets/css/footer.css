@@ -10,15 +10,8 @@
     left: 0; /* Alinha o footer à esquerda */
     width: 100%; /* Garante que o footer ocupe toda a largura da tela */
     z-index: 1000; /* Garante que o footer fique acima de outros elementos */
-}
-
-/* Alinha o conteúdo dentro do footer */
-.footer .container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
 }
 
 /* Estilo para o texto do footer */

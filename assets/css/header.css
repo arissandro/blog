@@ -33,15 +33,15 @@ header {
 }
 
 
-.header-conatiner-menu-list {
+.header-container-menu-list {
    display: flex;
 }
 
-.header-conatiner-menu-list-item-link {
+.header-container-menu-list-item-link {
     color: white;
-    background-color: red;
+    background-color: var(--button-bg);
     padding: 10px;
     margin: 0 1px;
     border-radius: 3px;
-    font-family: var(--font-secondary);
+    font-family: var(--font-tertiary);
 }

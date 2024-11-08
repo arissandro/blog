@@ -1,66 +1,50 @@
 @import url("/assets/css/root.css");
 
-/* Estilo para a seção dos posts */
 .posts-container {
     background: var(--container-color);
-    display: flex; /* Usando flexbox */
-    flex-direction: row; /* Alinha os itens na horizontal */
-    flex-wrap: wrap; /* Permite que os itens que ultrapassarem a largura quebrem para a linha seguinte */
-    gap: 20px; /* Espaçamento entre os itens */
-    justify-content: flex-start; /* Alinha os itens ao começo da linha */
-    padding: 20px; /* Adiciona um padding para garantir que os cards não fiquem colados na borda da seção */
-}
-
-/* Estilo para cada container de post (quadrado/card) */
-.home-post-container {
-    width: 300px; /* Largura fixa do quadrado */
-    height: 300px; /* Altura fixa do quadrado */
-    border: 2px solid #ddd; /* Borda ao redor do quadrado */
-    border-radius: 8px; /* Bordas arredondadas */
-    box-sizing: border-box; /* Inclui padding e borda no cálculo do tamanho total */
+    max-width: 100vw;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Organiza o conteúdo no topo */
-    text-align: left;
-    background-color: #f9f9f9; /* Cor de fundo */
-    transition: all 0.3s ease; /* Transição suave para efeito hover */
-    margin-bottom: 20px; /* Espaçamento entre os quadrados na vertical */
-    padding: 15px; /* Garante um espaço interno para o conteúdo do card */
-    overflow: hidden; /* Garante que o conteúdo não ultrapasse as bordas do card */
+    padding: 20px;
 }
 
-/* Efeito ao passar o mouse */
-.home-post-container:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombras ao passar o mouse */
+.post-article {
+    width: 500px;
+    border: 2px solid lightgreen;
+    border-radius: 3px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: lightgray;
+    transition: all 0.3s ease;
+    margin: 20px auto;
+    padding: 15px;
+    overflow: hidden;
 }
 
-/* Estilo para o título da postagem */
-.home-post-title {
+.post-article:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.post-title {
     font-family: var(--font-primary);
     font-size: 1.5rem;
     font-weight: bold;
     margin: 0;
     color: #333;
+    line-height: 3rem;
     text-align: center;
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
-/* Estilo para o conteúdo da postagem */
-.home-post-content {
+.post-content{
     font-size: 1rem;
-    line-height: 1.4;
-    color: #555;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    flex-grow: 1;
-    overflow: hidden; /* Impede o transbordamento do conteúdo */
-    text-overflow: ellipsis; /* Adiciona reticências "..." se o texto ultrapassar o limite */
+    line-height: 1.5rem;
+    font-family: var(--font-tertiary);
 }
 
-/* Estilo para o link "Leia mais..." */
 .home-post-link {
     font-size: 1rem;
     color: #007BFF;
