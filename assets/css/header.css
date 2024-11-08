@@ -1,20 +1,18 @@
 @import url("/assets/css/root.css");
-/*Cabecalho*/
+
+/* Cabecalho */
 header {
     background-color: var(--bg-color);
     width: 100vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 24px 20px; 
-    box-sizing: border-box; 
+    padding: 24px 20px;
+    box-sizing: border-box;
     border-bottom: 1px solid var(--second-color);
 }
 
-.header-title span {
-    color: var(--second-color);
-}
-
+/* Título do Header */
 .header-title {
     color: var(--title-color);
     font-size: 3rem;
@@ -24,24 +22,62 @@ header {
     text-decoration-color: red;
 }
 
-
-.header-container-menu {
-    
-    width: 100%;       
-    padding: 10px 20px; 
-    
+.header-title span {
+    color: var(--second-color);
 }
 
+/* Menu de navegação */
+.header-container-menu {
+    width: 100%;
+    padding: 10px 20px;
+}
 
 .header-container-menu-list {
-   display: flex;
+    display: flex;
+    justify-content: flex-start; /* Alinha os itens à esquerda */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header-container-menu-list-item {
+    margin-right: 15px; /* Espaço entre os itens do menu */
 }
 
 .header-container-menu-list-item-link {
     color: white;
     background-color: var(--button-bg);
     padding: 10px;
-    margin: 0 1px;
     border-radius: 3px;
     font-family: var(--font-tertiary);
+    text-decoration: none; /* Remove sublinhado */
+    transition: background-color 0.3s ease; /* Adiciona transição suave ao fundo */
+}
+
+.header-container-menu-list-item-link:hover {
+    background-color: var(--hover-bg); /* Altera a cor do fundo ao passar o mouse */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Coloca o header em coluna para telas pequenas */
+        align-items: center; /* Centraliza os itens */
+        padding: 16px 10px;
+    }
+
+    .header-title {
+        font-size: 2rem; /* Reduz o tamanho do título para telas pequenas */
+        text-align: center; /* Centraliza o título */
+    }
+
+    .header-container-menu-list {
+        flex-direction: row; /* Exibe o menu em coluna em telas menores */
+        width: 100%;
+    }
+
+    .header-container-menu-list-item {
+        margin: 5px 5px; /* Adiciona espaço entre os itens do menu em telas pequenas */
+        width: 100%; /* Faz os itens do menu ocuparem toda a largura */
+    }
 }

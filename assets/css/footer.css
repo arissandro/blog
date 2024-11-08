@@ -12,6 +12,9 @@
     z-index: 1000; /* Garante que o footer fique acima de outros elementos */
     display: flex;
     flex-direction: column;
+    justify-content: center; /* Garante que os itens fiquem centralizados */
+    align-items: center; /* Alinha itens ao centro horizontalmente */
+    box-sizing: border-box; /* Garantir que o padding seja considerado na largura */
 }
 
 /* Estilo para o texto do footer */
@@ -22,6 +25,13 @@
 }
 
 /* Estilo para os links sociais */
+.footer .social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
 .footer .social a {
     display: inline-block;
     margin: 10px;
@@ -36,4 +46,17 @@
 
 .footer .social i {
     vertical-align: middle;
+}
+
+/* Responsividade para dispositivos menores */
+@media (max-width: 768px) {
+    .footer {
+        padding: 15px 0; /* Reduz o padding em telas menores */
+        font-size: 0.9rem; /* Ajusta o tamanho da fonte */
+    }
+
+    .footer .social a {
+        font-size: 1.3rem; /* Ajusta o tamanho dos ícones sociais */
+        margin: 8px; /* Reduz o espaço entre os ícones */
+    }
 }

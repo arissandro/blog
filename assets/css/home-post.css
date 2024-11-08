@@ -2,17 +2,20 @@
 
 .posts-container {
     background: var(--container-color);
-    max-width: 100vw;
+    width: 100%; /* Garante que o contêiner ocupe toda a largura da tela */
+    max-width: 100vw; /* Não ultrapassa a largura da tela */
     display: flex;
     flex-direction: column;
     padding: 20px;
+    box-sizing: border-box; /* Evita que o padding ultrapasse o tamanho do contêiner */
 }
 
 .post-article {
-    width: 500px;
+    width: 100%; /* Garante que o post ocupe toda a largura disponível */
+    max-width: 500px; /* Largura máxima fixa */
     border: 2px solid lightgreen;
     border-radius: 3px;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Inclui o padding e a borda no cálculo da largura */
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -39,7 +42,7 @@
     overflow-wrap: break-word;
 }
 
-.post-content{
+.post-content {
     font-size: 1rem;
     line-height: 1.5rem;
     font-family: var(--font-tertiary);
@@ -54,4 +57,24 @@
 .home-post-link:hover {
     text-decoration: underline;
     color: #0056b3;
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 768px) {
+    .post-article {
+        width: 90%; /* Largura ajustada para telas menores */
+        max-width: 100%; /* Não ultrapassa a tela */
+        margin: 10px auto; /* Reduz o espaçamento entre as postagens */
+        padding: 12px; /* Reduz o padding */
+    }
+
+    .post-title {
+        font-size: 1.3rem; /* Ajusta o tamanho da fonte do título */
+        line-height: 2rem; /* Reduz o espaço entre as linhas */
+    }
+
+    .post-content {
+        font-size: 0.9rem; /* Ajusta o tamanho da fonte do conteúdo */
+        line-height: 1.4rem; /* Ajusta o espaçamento entre as linhas */
+    }
 }

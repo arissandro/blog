@@ -1,8 +1,12 @@
 /* Estilo para a seção da postagem */
 .post-section {
-    position: relative; /* Para a posição absoluta do canvas */
+    position: relative; /* Para a posição do canvas */
     height: 100vh; /* A altura da tela inteira */
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-color); /* Fundo padrão */
 }
 
 /* Canvas que gera o fundo dinâmico */
@@ -16,38 +20,41 @@
 
 /* Estilo para o contêiner da postagem */
 .post-container {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centraliza o conteúdo */
-    background: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente */
-    padding: 20px;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 800px; /* Aumenta a largura do contêiner */
+    position: relative;
+    background: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
+    padding: 24px;
+    border-radius: 12px;
+    width: 90%; /* Largura ajustável */
+    max-width: 900px; /* Largura máxima ajustada */
     text-align: center;
     color: white;
     z-index: 1; /* Garante que o conteúdo fique acima do fundo */
+    box-sizing: border-box;
+    overflow-wrap: break-word; /* Quebra palavras longas */
+    letter-spacing: 0.5px; /* Ajuste no espaçamento das letras */
 }
 
 /* Estilo para o título da postagem */
 .post-title {
-    font-size: 3rem;
+    font-size: 2.5rem; /* Ajustei o tamanho da fonte */
     font-weight: bold;
     margin: 0;
-    word-wrap: break-word;
+    text-align: center;
+    word-wrap: break-word; /* Quebra palavras longas */
     overflow-wrap: break-word;
+    letter-spacing: 1px; /* Espaçamento maior para o título */
 }
 
 /* Estilo para o conteúdo da postagem */
 .post-content {
-    font-size: 1.2rem;
-    line-height: 1.5;
+    font-size: 1.1rem; /* Ajustei o tamanho da fonte */
+    line-height: 1.6;
     color: #fff;
     margin: 20px 0;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
     width: 100%;
+    word-wrap: break-word; /* Quebra palavras longas */
+    overflow-wrap: break-word;
+    letter-spacing: 0.8px; /* Ajuste no espaçamento das letras */
 }
 
 /* Estilo para a data da postagem */
@@ -61,4 +68,32 @@
 .post-category {
     font-size: 1rem;
     color: #ccc;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .post-section {
+        height: auto; /* Ajusta a altura da seção para dispositivos móveis */
+        padding: 20px 10px; /* Ajusta o padding para telas menores */
+    }
+
+    .post-container {
+        width: 85%; /* Reduz a largura do contêiner em dispositivos móveis */
+        padding: 16px; /* Reduz o padding */
+        border-radius: 8px; /* Reduz o border-radius */
+    }
+
+    .post-title {
+        font-size: 2rem; /* Ajusta o tamanho do título para telas pequenas */
+        letter-spacing: 0.5px; /* Reduz o espaçamento das letras no título */
+    }
+
+    .post-content {
+        font-size: 1rem; /* Ajusta o tamanho do conteúdo para telas pequenas */
+        letter-spacing: 0.5px; /* Ajusta o espaçamento das letras no conteúdo */
+    }
+
+    .post-date, .post-category {
+        font-size: 0.9rem; /* Ajusta o tamanho da data e categoria para telas pequenas */
+    }
 }

@@ -1,6 +1,9 @@
 /* CSS Reset Completo */
+
 /* Reset Básico */
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -11,7 +14,7 @@
     text-decoration: none;
 }
 
-/* Geral */
+/* Estilos Gerais */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -35,8 +38,12 @@ header, hgroup, main, menu, nav, section {
     display: block;
 }
 
+/* Estilo para o Body */
 body {
-    line-height: 1;
+    line-height: 1.5; /* Melhor legibilidade */
+    font-family: Arial, sans-serif; /* Escolha uma fonte padrão */
+    background-color: #fff; /* Cor de fundo padrão */
+    color: #333; /* Cor de texto mais suave */
 }
 
 /* Listas */
@@ -49,8 +56,8 @@ blockquote, q {
     quotes: none;
 }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote::before, blockquote::after,
+q::before, q::after {
     content: '';
     content: none;
 }
@@ -61,8 +68,43 @@ table {
     border-spacing: 0;
 }
 
+/* Correções de alinhamento padrão para o header */
+header, footer {
+    position: relative;
+    width: 100%;
+    background-color: #f8f8f8;
+}
 
+/* Imagens */
+img {
+    max-width: 100%;
+    height: auto; /* Responsividade nas imagens */
+    display: block;
+}
 
-body {
-    font-family: Arial, sans-serif; /* Escolha uma fonte padrão */
+/* Formulários */
+input, button, textarea, select {
+    font: inherit; /* Garantir que os elementos de formulário herdem as fontes */
+}
+
+/* Melhorar acessibilidade para links */
+a:focus, a:hover {
+    outline: none;
+    text-decoration: underline;
+}
+
+/* Estilos para o texto */
+strong, b {
+    font-weight: bold;
+}
+
+em, i {
+    font-style: italic;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    body {
+        font-size: 0.9rem; /* Ajusta o tamanho da fonte em telas menores */
+    }
 }

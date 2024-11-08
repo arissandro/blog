@@ -1,41 +1,59 @@
 @import url("/assets/css/root.css");
-.home {
 
-    height: 25vh;
-    max-height: 30vh; 
+/* Seção Home */
+.home {
     width: 100vw;
     background-color: black;
     box-sizing: border-box;
     overflow: hidden;
-    
+    display: flex; /* Permite que a home seja flexível */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
 }
 
-.home-container{
-    align-items: center;
-    padding: 24px 0;
+.home-container {
     width: 50%;
-    height: 100%;
-    margin: 0 auto;
+    padding: 24px 0;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    
+    justify-content: center;
+    text-align: center; /* Garante que o texto no título e subtítulo seja centralizado */
 }
-
 
 .home-title {
     color: var(--second-color);
     font-family: var(--font-primary);
-    font-size: 1.5rem; 
-    font-weight: bold; 
-    align-items: center;
-    text-align: center;
-
+    font-size: 2rem; /* Aumentei o tamanho da fonte para melhorar a visibilidade */
+    font-weight: bold;
+    margin-bottom: 10px; /* Adiciona espaço abaixo do título */
 }
 
 .home-subtitle {
     text-align: center;
     font-family: var(--font-secondary);
-    font-size: .9rem; 
-    color: var(--shadow-color); 
+    font-size: 1rem; /* Aumentei o tamanho da fonte do subtítulo para maior legibilidade */
+    color: var(--shadow-color);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    /* Seção Home */
+    .home {
+        height: auto; /* Permite que a altura da home seja ajustada dinamicamente */
+        padding: 20px 10px; /* Ajusta o padding para telas menores */
+    }
+
+    .home-container {
+        width: 90%; /* Aumenta a largura da home-container para telas menores */
+        padding: 10px 0; /* Ajusta o padding para telas menores */
+    }
+
+    .home-title {
+        font-size: 1.5rem; /* Reduz o tamanho da fonte para telas pequenas */
+    }
+
+    .home-subtitle {
+        font-size: 0.9rem; /* Reduz o tamanho da fonte do subtítulo para telas pequenas */
+    }
 }
