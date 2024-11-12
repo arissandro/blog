@@ -1,0 +1,37 @@
+@import url("/assets/css/root.css");
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid rgba(0, 0, 0, 0.8);
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    letter-spacing: 3px;
+    background-color: #1a1a1a;
+    color: lightgreen;
+}
+
+thead {
+    background-color: black;
+    color: lightgreen;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+tbody tr:hover {
+    background-color: #333333;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #2b2b2b;
+}
+
+tfoot {
+    background-color: black;
+    color: lightgreen;
+    font-weight: bold;
+}
