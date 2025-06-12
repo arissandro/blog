@@ -94,5 +94,5 @@ config/settings.yml
 .env
 .py
 
-poster.py
+app.py
 
