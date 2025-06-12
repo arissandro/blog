@@ -10,9 +10,19 @@ html.no-scroll, body.no-scroll {
     overflow: hidden;
 }
 
-/* Base: Oculta o ícone de menu em desktop */
+/* Base: Oculta o ícone de menu em desktop por padrão */
 .menu-toggle {
     display: none;
+}
+
+/* Base: Garante que o menu de navegação esteja visível por padrão em desktop */
+.header-container-menu {
+    display: block; /* Ou flex, dependendo de como você o organiza */
+    position: static; /* Remove a fixação para desktop */
+    width: auto;
+    height: auto;
+    right: auto;
+    transition: none; /* Remove a transição de slide para desktop */
 }
 
 /* --- ESTILOS PARA O ÍCONE HAMBÚRGUER CUSTOMIZADO --- */
@@ -87,7 +97,7 @@ html.no-scroll, body.no-scroll {
 
     /* Oculta o menu de navegação padrão em telas menores (será controlado por JS) */
     .header-container-menu {
-        display: none;
+        display: none; /* Oculta o menu por padrão em mobile */
     }
 
     /* Mostra o ícone de menu (hambúrguer) - Agora é o seu ícone customizado! */
@@ -97,7 +107,7 @@ html.no-scroll, body.no-scroll {
 
     /* Estilos para o menu quando estiver ativo (controlado por JS) */
     .header-container-menu.active {
-        display: flex;
+        display: flex; /* Exibe o menu quando 'active' */
         flex-direction: column;
         align-items: center;
         background-color: var(--bg-color);
@@ -108,7 +118,7 @@ html.no-scroll, body.no-scroll {
         padding: 60px 0;
         position: fixed;
         top: 0;
-        right: 0;
+        right: 0; /* Posição inicial para slide-in */
         width: 70%;
         z-index: 999;
     }
