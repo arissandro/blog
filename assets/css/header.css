@@ -1,83 +1,64 @@
 @import url("/assets/css/root.css");
 
-/* Cabecalho */
+/* ------------------------------------------------------------- */
+/* Header */
+/* ------------------------------------------------------------- */
 header {
+    align-items: center;
     background-color: var(--bg-color);
-    width: 100vw;
+    border-bottom: 1px solid var(--terminal-border); /* Borda mais "hacker" */
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 24px 20px;
-    box-sizing: border-box;
-    border-bottom: 1px solid var(--second-color);
+    width: 100vw;
 }
 
-/* Título do Header */
 .header-title {
     color: var(--title-color);
+    font-family: var(--font-primary);
     font-size: 3rem;
     font-weight: bolder;
-    font-family: var(--font-primary);
     text-decoration: underline;
-    text-decoration-color: red;
+    text-decoration-color: var(--second-color); /* Roxo para destaque */
 }
 
 .header-title span {
     color: var(--second-color);
 }
 
-/* Menu de navegação */
 .header-container-menu {
-    width: 100%;
     padding: 10px 20px;
+    width: 100%;
 }
 
 .header-container-menu-list {
     display: flex;
-    justify-content: flex-start; /* Alinha os itens à esquerda */
+    justify-content: flex-start;
     list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
 
 .header-container-menu-list-item {
-    margin-right: 15px; /* Espaço entre os itens do menu */
+    margin-right: 15px;
 }
 
 .header-container-menu-list-item-link {
-    color: white;
     background-color: var(--button-bg);
-    padding: 10px;
+    border: 1px solid var(--terminal-border); /* Borda para botões */
     border-radius: 3px;
+    color: var(--text-light); /* Cor de texto mais clara para contraste */
     font-family: var(--font-tertiary);
-    text-decoration: none; /* Remove sublinhado */
-    transition: background-color 0.3s ease; /* Adiciona transição suave ao fundo */
+    padding: 10px;
+    text-decoration: none;
+    transition: background-color var(--transition-duration) var(--transition-timing),
+                color var(--transition-duration) var(--transition-timing),
+                box-shadow var(--transition-duration) var(--transition-timing);
 }
 
 .header-container-menu-list-item-link:hover {
-    background-color: var(--hover-bg); /* Altera a cor do fundo ao passar o mouse */
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column; /* Coloca o header em coluna para telas pequenas */
-        align-items: center; /* Centraliza os itens */
-        padding: 16px 10px;
-    }
-
-    .header-title {
-        font-size: 2rem; /* Reduz o tamanho do título para telas pequenas */
-        text-align: center; /* Centraliza o título */
-    }
-
-    .header-container-menu-list {
-        flex-direction: row; /* Exibe o menu em coluna em telas menores */
-        width: 100%;
-    }
-
-    .header-container-menu-list-item {
-        margin: 5px 5px; /* Adiciona espaço entre os itens do menu em telas pequenas */
-        width: 100%; /* Faz os itens do menu ocuparem toda a largura */
-    }
+    background-color: var(--hover-bg);
+    box-shadow: 0 0 10px var(--shadow-color); /* Efeito de brilho ao passar o mouse */
+    color: var(--font-color);
 }

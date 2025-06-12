@@ -1,0 +1,163 @@
+@import url("/assets/css/root.css");
+
+/* ------------------------------------------------------------- */
+/* Seção do Post Individual (full-page) */
+/* ------------------------------------------------------------- */
+.post-section {
+    min-height: calc(100vh - var(--header-height) - var(--footer-height)); /* Ajuste conforme a altura real do seu header/footer */
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha o conteúdo ao topo da seção */
+    padding: 60px 20px; /* Padding para a seção do post */
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Container principal do conteúdo do post */
+.post-container {
+    background: rgba(0, 0, 0, 0.85); /* Fundo semi-transparente */
+    border: 2px solid var(--font-color);
+    border-radius: 10px;
+    box-shadow: 0 0 30px var(--shadow-color);
+    color: var(--text-light);
+    max-width: 900px; /* Largura máxima para o conteúdo do post */
+    padding: 40px; /* Padding interno do container */
+    position: relative;
+    text-align: left; /* Texto alinhado à esquerda para leitura normal */
+    width: 100%;
+    word-break: break-word; /* Garante que palavras longas quebrem */
+    z-index: 1;
+    margin-top: 20px; /* Espaçamento do topo */
+}
+
+/* Título do Post (na página completa) */
+.post-container .post-title {
+    color: var(--font-color);
+    font-family: var(--font-primary);
+    font-size: 3rem; /* Tamanho maior para o título principal */
+    letter-spacing: 2px;
+    margin: 0 0 20px 0;
+    text-shadow: 0 0 10px var(--shadow-color);
+    text-align: center; /* Centraliza o título */
+}
+
+/* Conteúdo do Post (parágrafos, etc.) */
+.post-container .post-content {
+    color: var(--text-light);
+    font-family: var(--font-secondary); /* Pode usar uma fonte de leitura mais amigável aqui, se quiser */
+    font-size: 1.1rem;
+    letter-spacing: 0.8px;
+    line-height: 1.8; /* Espaçamento entre linhas para melhor legibilidade */
+    margin: 20px 0;
+    /* Remover regras de line-clamp que eram do card */
+    display: block;
+    -webkit-box-orient: unset;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+    text-overflow: unset;
+    white-space: normal;
+}
+
+.post-container .post-content p {
+    margin-bottom: 1em; /* Espaço entre parágrafos */
+}
+
+/* Data e Categoria do Post */
+.post-date,
+.post-category {
+    color: var(--second-color);
+    font-family: var(--font-tertiary);
+    font-size: 0.9rem;
+    margin: 10px 0;
+    text-align: center; /* Centraliza data e categoria */
+}
+
+/* Estilo para Citações (blockquote) dentro do post */
+.post-quote {
+    background-color: var(--highlight-bg);
+    border-left: 5px solid var(--second-color);
+    padding: 15px 20px;
+    margin: 20px 0;
+    font-style: italic;
+    color: var(--text-color);
+    text-align: left; /* Alinha a citação à esquerda */
+}
+
+/* Estilo para Blocos de Código (pre) */
+.code-block {
+    background-color: var(--code-bg);
+    border: 1px solid var(--input-border-color);
+    border-radius: 5px;
+    padding: 15px;
+    margin: 20px 0;
+    overflow-x: auto; /* Permite rolagem horizontal para código longo */
+}
+
+.code-block code {
+    font-family: var(--font-primary); /* Fonte monoespaçada para código */
+    font-size: 0.9rem;
+    color: var(--second-color); /* Cor de texto do código */
+    line-height: 1.5;
+    display: block; /* Garante que o código se comporte como um bloco */
+}
+
+/* Efeito Matrix (se você tiver o JS para ele) */
+#matrix {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+}
+
+/* --- Responsividade para a página de post --- */
+@media (max-width: 768px) {
+    .post-section {
+        padding: 30px 15px;
+    }
+
+    .post-container {
+        padding: 25px;
+        max-width: 95%;
+    }
+
+    .post-container .post-title {
+        font-size: 2.2rem;
+    }
+
+    .post-container .post-content {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .post-quote {
+        padding: 10px 15px;
+    }
+
+    .code-block {
+        padding: 10px;
+    }
+
+    .code-block code {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .post-section {
+        padding: 20px 10px;
+    }
+    .post-container {
+        padding: 15px;
+    }
+    .post-container .post-title {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+    .post-container .post-content {
+        font-size: 0.9rem;
+    }
+}

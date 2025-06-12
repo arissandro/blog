@@ -1,62 +1,49 @@
-/* Estilo para o footer */
+/* ------------------------------------------------------------- */
+/* Footer */
+/* ------------------------------------------------------------- */
 .footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-    font-size: 1rem;
-    position: relative; /* Rodapé com posição normal */
-    bottom: 0; /* Não é mais necessário, mas mantém para consistência */
-    left: 0; /* Alinha o footer à esquerda */
-    width: 100%; /* Garante que o footer ocupe toda a largura da tela */
-    z-index: 1000; /* Garante que o footer fique acima de outros elementos */
+    align-items: center;
+    background-color: #1a1a1a;
+    box-sizing: border-box;
+    color: var(--text-light);
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Garante que os itens fiquem centralizados */
-    align-items: center; /* Alinha itens ao centro horizontalmente */
-    box-sizing: border-box; /* Garantir que o padding seja considerado na largura */
+    justify-content: center;
+    left: 0;
+    padding: 20px 0;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    z-index: 1000;
 }
 
-/* Estilo para o texto do footer */
 .footer p {
-    margin: 0;
+    color: var(--text-light);
     font-size: 1rem;
-    color: #ddd;
+    margin: 0;
 }
 
-/* Estilo para os links sociais */
 .footer .social {
+    align-items: center;
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .footer .social a {
+    color: var(--text-light);
     display: inline-block;
-    margin: 10px;
-    color: #fff;
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
+    font-size: 1.8rem;
+    margin: 0 15px;
+    transition: color var(--transition-duration) var(--transition-timing),
+                transform var(--transition-duration) var(--transition-timing);
 }
 
 .footer .social a:hover {
-    color: #0077b5;
+    color: var(--font-color);
+    transform: scale(1.2);
 }
 
 .footer .social i {
     vertical-align: middle;
-}
-
-/* Responsividade para dispositivos menores */
-@media (max-width: 768px) {
-    .footer {
-        padding: 15px 0; /* Reduz o padding em telas menores */
-        font-size: 0.9rem; /* Ajusta o tamanho da fonte */
-    }
-
-    .footer .social a {
-        font-size: 1.3rem; /* Ajusta o tamanho dos ícones sociais */
-        margin: 8px; /* Reduz o espaço entre os ícones */
-    }
 }

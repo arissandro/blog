@@ -1,0 +1,221 @@
+@import url("/assets/css/root.css");
+
+/* ------------------------------------------------------------- */
+/* Responsividade Geral */
+/* Este arquivo deve ser importado por último no HTML para sobrepor estilos */
+/* ------------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+    /* Home Section - Posts Grid */
+    .post-article {
+        /* Permite 2 colunas em telas maiores que 768px, mas menores que 1024px */
+        flex: 1 1 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+        height: 320px; /* Mantém a altura padrão para o "Leia Mais" fixo */
+        /* Removido: width: 320px; - flex e max-width já controlam a largura */
+        text-align: left; /* Garante alinhamento à esquerda */
+        align-items: flex-start; /* Garante que os itens internos comecem da esquerda */
+    }
+
+    /* Título do Post no CARD para esta resolução */
+    .post-article .post-title {
+        text-align: left; /* Garante alinhamento à esquerda */
+    }
+
+    /* Conteúdo do Post no CARD para esta resolução */
+    .post-article .post-content {
+        text-align: left; /* Garante alinhamento à esquerda */
+    }
+}
+
+@media (max-width: 768px) {
+    /* Header */
+    header {
+        align-items: center;
+        flex-direction: column;
+        padding: 16px 10px;
+    }
+
+    .header-title {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .header-container-menu-list {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .header-container-menu-list-item {
+        margin: 5px 0;
+        width: 100%;
+    }
+
+    .header-container-menu-list-item-link {
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Home Section (Hero) */
+    .home-container {
+        padding: 10px 0;
+        width: 90%;
+    }
+
+    .home-title {
+        font-size: 2.2rem;
+    }
+
+    .home-subtitle {
+        font-size: 1rem;
+    }
+
+    /* Filtro de Postagens */
+    .post-filter {
+        flex-direction: column;
+        padding: 12px 10px;
+        row-gap: 1rem;
+    }
+
+    .filter-item,
+    .active-filter {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        text-align: center;
+        width: 90%;
+    }
+
+    /* Posts Grid Container */
+    .posts-container {
+        gap: 15px;
+        padding: 20px;
+        justify-content: center;
+    }
+
+    /* Post Card */
+    .post-article {
+        flex: 1 1 calc(50% - 15px); /* Dois cards por linha, com um pouco menos de largura */
+        max-width: calc(50% - 15px);
+        height: 280px; /* <--- Mantido: Altura específica para esta resolução */
+        /* Removido: width: 280px; - flex e max-width já controlam a largura */
+        padding: 15px;
+        text-align: left; /* Garante alinhamento à esquerda */
+        align-items: flex-start; /* Garante que os itens internos comecem da esquerda */
+    }
+
+    /* Título do Post no CARD para esta resolução */
+    .post-article .post-title { /* <--- MODIFICADO: Seletor mais específico */
+        font-size: 1rem;
+        -webkit-line-clamp: 2;
+        text-align: left; /* Garante alinhamento à esquerda */
+    }
+
+    /* Conteúdo do Post no CARD para esta resolução */
+    .post-article .post-content { /* <--- MODIFICADO: Seletor mais específico */
+        font-size: 0.85rem;
+        -webkit-line-clamp: 6; /* Mantido em 6 linhas para telas menores */
+        text-align: left; /* Garante alinhamento à esquerda */
+    }
+
+    .home-post-link {
+        font-size: 0.8rem;
+        align-self: flex-start; /* Garante que o link "Leia Mais" seja alinhado à esquerda */
+    }
+
+    /* Post Section (Individual Post View) */
+    .post-section {
+        height: auto;
+        padding: 20px 10px;
+    }
+
+    .post-container {
+        border-radius: 8px;
+        padding: 20px;
+        width: 85%;
+    }
+
+    .post-container .post-title {
+        font-size: 2rem;
+        letter-spacing: 0.5px;
+    }
+
+    .post-container .post-content {
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+    }
+
+    .post-date,
+    .post-category {
+        font-size: 0.9rem;
+    }
+
+    /* Footer */
+    .footer {
+        font-size: 0.9rem;
+        padding: 15px 0;
+    }
+
+    .footer .social a {
+        font-size: 1.5rem;
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Header */
+    .header-title {
+        font-size: 1.8rem;
+    }
+
+    /* Home Section (Hero) */
+    .home-title {
+        font-size: 1.8rem;
+    }
+
+    .home-subtitle {
+        font-size: 0.8rem;
+    }
+
+    /* Post Card */
+    .post-article {
+        flex: 1 1 100%; /* Um card por linha em telas muito pequenas */
+        max-width: 100%;
+        height: 280px; /* <--- Mantido: Altura ajustada para telas muito pequenas */
+        /* Removido: width: 100%; - flex e max-width já controlam a largura */
+        padding: 10px;
+        text-align: left; /* Garante alinhamento à esquerda */
+        align-items: flex-start; /* Garante que os itens internos comecem da esquerda */
+    }
+
+    /* Título do Post no CARD para esta resolução */
+    .post-article .post-title { /* <--- MODIFICADO: Seletor mais específico */
+        font-size: 0.9rem;
+        -webkit-line-clamp: 2;
+        text-align: left; /* Garante alinhamento à esquerda */
+    }
+
+    /* Conteúdo do Post no CARD para esta resolução */
+    .post-article .post-content { /* <--- MODIFICADO: Seletor mais específico */
+        font-size: 0.8rem;
+        -webkit-line-clamp: 5; /* Mantido em 5 linhas para telas muito pequenas */
+        text-align: left; /* Garante alinhamento à esquerda */
+    }
+
+    .home-post-link {
+        align-self: flex-start; /* Garante que o link "Leia Mais" seja alinhado à esquerda */
+    }
+
+    /* Post Section (Individual Post View) */
+    .post-container {
+        padding: 15px;
+    }
+
+    .post-container .post-title {
+        font-size: 1.5rem;
+    }
+
+    .post-container .post-content {
+        font-size: 0.9rem;
+    }
+}

@@ -3,96 +3,183 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Hreff</title>
-    <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
-    <link href="/assets/css/reset.css" rel="stylesheet" />
-    <link href="/assets/css/root.css" rel="stylesheet" />
-    <link href="/assets/css/responsiv.css" rel="stylesheet" />
-    <link href="/assets/css/footer.css" rel="stylesheet" />
-    <link href="/assets/css/header.css" rel="stylesheet" />
-    <link href="/assets/css/home.css" rel="stylesheet" />
-    <link href="/assets/css/home-filter.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/assets/css/table.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Hreff - Seu blog de tecnologia e hacking." />
+    <meta name="keywords" content="blog, tecnologia, hacking, programação, segurança" />
+    <meta name="author" content="Hreff Team" />
+
+    <title>Hreff - Blog Hacker</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 
+    <link rel="stylesheet" href="/assets/css/root.css" />
+    <link rel="stylesheet" href="/assets/css/reset.css" />
+    <link rel="stylesheet" href="/assets/css/header.css" />
+    <link rel="stylesheet" href="/assets/css/home.css" />
+    <link rel="stylesheet" href="/assets/css/home-filter.css" />
+    <link rel="stylesheet" href="/assets/css/table.css" />
+    <link rel="stylesheet" href="/assets/css/footer.css" />
+    <link rel="stylesheet" href="/assets/css/responsive.css" />
 </head>
 
 <body>
     <header class="header">
-        <a class="header-title" href="#">
+        <a class="header-title" href="/">
             H<span>reff</span>.
         </a>
         <div class="header-container">
-            <nav class="header-container-menu">
+            <nav class="header-container-menu" aria-label="Menu Principal">
                 <ul class="header-container-menu-list">
                     <li class="header-container-menu-list-item">
-                        <a class="header-container-menu-list-item-link" href="#">exemplo</a>
+                        <a class="header-container-menu-list-item-link" href="#about">Sobre</a>
                     </li>
                     <li class="header-container-menu-list-item">
-                        <a class="header-container-menu-list-item-link" href="#">exemplo</a>
+                        <a class="header-container-menu-list-item-link" href="#categories">Categorias</a>
                     </li>
                     <li class="header-container-menu-list-item">
-                        <a class="header-container-menu-list-item-link" href="#">exemplo</a>
+                        <a class="header-container-menu-list-item-link" href="#latest-posts">Últimos Posts</a>
                     </li>
                     <li class="header-container-menu-list-item">
-                        <a class="header-container-menu-list-item-link" href="#">exemplo</a>
+                        <a class="header-container-menu-list-item-link" href="#contact">Contato</a>
                     </li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Seção Home -->
-    <section class="home">
-        <div class="home-container">
-            <h2 class="home-title">Loading.sh</h2>
-            <p class="home-subtitle">
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim quidem est exercitationem voluptatibus
-                facere sed, fugit veniam architecto temporibus. Aliquam amet porro commodi quod iusto, dicta magni natus
-                blanditiis quibusdam." by - lorem
-            </p>
-        </div>
-    </section>
+    <main>
+        <section class="home" aria-labelledby="home-main-title">
+            <div class="home-container">
+                <h1 id="home-main-title" class="home-title">Loading.sh</h1>
+                <p class="home-subtitle">
+                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim quidem est
+                    exercitationem voluptatibus facere sed, fugit veniam architecto temporibus.
+                    Aliquam amet porro commodi quod iusto, dicta magni natus blanditiis quibusdam."
+                    <span class="home-subtitle-author">by - lorem</span>
+                </p>
+            </div>
+        </section>
 
-    <!-- Filtro de Postagens -->
-    <div class="post-filter container">
-        <span class="filter-item active-filter" data-filter="blue">blue</span>
-        <span class="filter-item" data-filter="red">red</span>
-        <span class="filter-item active-filter" data-filter="blue">blue</span>
-        <span class="filter-item" data-filter="red">red</span>
-    </div>
+        <section class="post-filter container" aria-labelledby="filter-posts-title">
+            <span class="filter-item active-filter" data-filter="all">Todos</span>
+            <span class="filter-item" data-filter="blue">Blue Team</span>
+            <span class="filter-item" data-filter="red">Red Team</span>
+            <span class="filter-item" data-filter="dev">Desenvolvimento</span>
+            <span class="filter-item" data-filter="cybersec">Cibersegurança</span>
+        </section>
 
-    <!-- Container de Postagens -->
-    <div id="posts-container"></div>
+        <section id="posts-container" class="posts-container" aria-labelledby="blog-posts-title"></section>
+    </main>
 
-    <!-- Rodapé -->
-    <footer class="footer container">
-        <p>© All Right Reserved to Hreff.</p>
+    <footer class="footer container" role="contentinfo">
+        <p>&copy; <span id="current-year"></span> All Rights Reserved to Hreff.</p>
         <div class="social">
-            <a href="https://br.linkedin.com/in/arissandro" target="_blank">
+            <a href="https://br.linkedin.com/in/arissandro" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Arissandro">
                 <i class="bx bxl-linkedin"></i>
             </a>
-        </div>
+            </div>
     </footer>
 
     <script>
-        const files = ['post1.html', 'post2.html']; // Adicione os nomes dos seus arquivos de post aqui
-        const container = document.getElementById('posts-container');
+        // Função para obter o ano atual dinamicamente para o rodapé
+        document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        files.forEach(file => {
-            fetch(file)
-                .then(res => res.text())
-                .then(html => {
-                    const div = document.createElement('div');
-                    div.className = 'post-article'; // Use a classe existente para estilização
-                    div.innerHTML = html;
-                    container.appendChild(div);
+        // Lista de arquivos de post a serem carregados
+        // Ambos 'file' e 'url' apontam para a página COMPLETA do post.
+        // O JS irá extrair o resumo da página completa.
+        const postFiles = [
+            { file: 'posts/Um-Post-da-Dark-Web.html', url: 'posts/Um-Post-da-Dark-Web.html', categories: 'blue,dev' },
+            { file: 'posts/NaNo-Comandos.html', url: 'posts/NaNo-Comandos.html', categories: 'red,cybersec' }
+];
+
+        const postsContainer = document.getElementById('posts-container');
+
+        /**
+         * Carrega o conteúdo de uma página de post completa, extrai o resumo
+         * e insere-o como um card clicável no container.
+         * @param {object} postData - Objeto contendo file (URL do post completo), url (URL para o link do card) e categories.
+         */
+        async function loadPost(postData) {
+            try {
+                const response = await fetch(postData.file); // Busca o HTML da página COMPLETA
+                if (!response.ok) {
+                    throw new Error(`Erro ao carregar o post completo ${postData.file}: ${response.statusText}`);
+                }
+                const fullHtml = await response.text();
+
+                // Cria um elemento temporário para parsear o HTML e extrair o conteúdo
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = fullHtml;
+
+                // Extrai o título e o primeiro parágrafo
+                const postTitleElement = tempDiv.querySelector('.post-full-title'); // Título do post completo
+                const postContentElements = tempDiv.querySelectorAll('.post-full-content p'); // Parágrafos do conteúdo completo
+
+                let title = postTitleElement ? postTitleElement.textContent : 'Título Desconhecido';
+                let summaryContent = '';
+                if (postContentElements.length > 0) {
+                    // Pega o texto dos primeiros X parágrafos (ajuste conforme necessário)
+                    // Para o card, geralmente queremos apenas uma pequena introdução.
+                    // Pegaremos o texto do primeiro parágrafo.
+                    summaryContent = postContentElements[0].textContent;
+                    // Você pode querer limitar ainda mais o tamanho do summaryContent aqui
+                    // Ex: summaryContent = summaryContent.substring(0, 150) + '...';
+                } else {
+                    summaryContent = 'Nenhum resumo disponível.';
+                }
+
+
+                // Cria o elemento <a> que será o card clicável
+                const postLink = document.createElement('a');
+                postLink.href = postData.url; // Define o link para a página COMPLETA do post
+                postLink.className = 'post-article'; // Aplica a classe de estilo do card (do home.css)
+                postLink.setAttribute('data-categories', postData.categories); // Adiciona as categorias para o filtro
+
+                // Constrói o HTML do card diretamente aqui, usando as classes de estilo do home.css
+                postLink.innerHTML = `
+                    <h3 class="post-title">${title}</h3>
+                    <p class="post-content">${summaryContent}</p>
+                    <span class="home-post-link">Leia Mais</span>
+                `;
+
+                postsContainer.appendChild(postLink);
+            } catch (error) {
+                console.error(error);
+                const errorDiv = document.createElement('div');
+                errorDiv.textContent = `Não foi possível carregar o post para gerar o resumo de ${postData.file}.`;
+                errorDiv.style.color = 'var(--error-color)';
+                postsContainer.appendChild(errorDiv);
+            }
+        }
+
+        // Carrega todos os posts ao carregar a página
+        postFiles.forEach(post => loadPost(post));
+
+        // Lógica de Filtro
+        const filterItems = document.querySelectorAll('.filter-item');
+
+        filterItems.forEach(item => {
+            item.addEventListener('click', function() {
+                filterItems.forEach(filter => filter.classList.remove('active-filter'));
+                this.classList.add('active-filter');
+
+                const filterValue = this.getAttribute('data-filter');
+                const articles = document.querySelectorAll('.post-article'); // Agora são <a> tags
+
+                articles.forEach(article => {
+                    const articleCategories = article.getAttribute('data-categories') || '';
+                    if (filterValue === 'all' || articleCategories.includes(filterValue)) {
+                        article.style.display = 'flex'; // Exibe o post (que agora é um link)
+                    } else {
+                        article.style.display = 'none'; // Esconde o post (link)
+                    }
                 });
+            });
         });
     </script>
 </body>
 
 </html>
-

@@ -4,31 +4,23 @@
 *,
 *::before,
 *::after {
+    box-sizing: border-box;
+    font-family: 'Baloo 2', cursive, 'Poppins', sans-serif, 'Roboto', sans-serif; /* Mantido do original, mas pode ser ajustado pelas variáveis de fonte */
+    list-style: none;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     scroll-behavior: smooth;
     scroll-padding-top: 2rem;
-    font-family: 'Baloo 2', cursive, 'Poppins', sans-serif, 'Roboto', sans-serif;
-    list-style: none;
     text-decoration: none;
 }
 
 /* Estilos Gerais */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
-    margin: 0;
-    padding: 0;
+a, abbr, acronym, address, applet, article, aside, b, big, blockquote, body, button, caption, center, cite, code, del, details, dfn, div, dl, dt, dd, em, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, input, ins, kbd, label, legend, li, main, menu, nav, object, ol, p, pre, q, select, section, small, span, strong, sub, sup, table, tbody, td, tfoot, th, thead, textarea, tt, u, ul, var {
     border: 0;
     font-size: 100%;
     font: inherit;
+    margin: 0;
+    padding: 0;
     vertical-align: baseline;
 }
 
@@ -40,10 +32,10 @@ header, hgroup, main, menu, nav, section {
 
 /* Estilo para o Body */
 body {
-    line-height: 1.5; /* Melhor legibilidade */
-    font-family: Arial, sans-serif; /* Escolha uma fonte padrão */
-    background-color: #fff; /* Cor de fundo padrão */
-    color: #333; /* Cor de texto mais suave */
+    background-color: var(--bg-color); /* Usando variável do tema */
+    color: var(--font-color); /* Usando variável do tema */
+    font-family: var(--font-secondary); /* Usando variável do tema */
+    line-height: 1.6; /* Melhor legibilidade, ajustado */
 }
 
 /* Listas */
@@ -68,22 +60,22 @@ table {
     border-spacing: 0;
 }
 
-/* Correções de alinhamento padrão para o header */
-header, footer {
+/* Correções de alinhamento padrão para o header e footer */
+footer, header {
+    background-color: var(--bg-color); /* Usando variável do tema */
     position: relative;
     width: 100%;
-    background-color: #f8f8f8;
 }
 
 /* Imagens */
 img {
-    max-width: 100%;
-    height: auto; /* Responsividade nas imagens */
     display: block;
+    height: auto; /* Responsividade nas imagens */
+    max-width: 100%;
 }
 
 /* Formulários */
-input, button, textarea, select {
+button, input, select, textarea {
     font: inherit; /* Garantir que os elementos de formulário herdem as fontes */
 }
 
@@ -94,17 +86,10 @@ a:focus, a:hover {
 }
 
 /* Estilos para o texto */
-strong, b {
+b, strong {
     font-weight: bold;
 }
 
 em, i {
     font-style: italic;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    body {
-        font-size: 0.9rem; /* Ajusta o tamanho da fonte em telas menores */
-    }
 }

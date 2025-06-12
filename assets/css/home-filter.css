@@ -1,55 +1,50 @@
 @import url("/assets/css/root.css");
 
+/* ------------------------------------------------------------- */
 /* Filtro de Postagens */
+/* ------------------------------------------------------------- */
 .post-filter {
-    width: 100vw;
+    align-items: center;
     background-color: var(--bg-color);
+    border-top: 1px solid var(--terminal-border);
+    box-sizing: border-box;
+    column-gap: 1.5rem;
     display: flex;
     justify-content: center;
-    align-items: center;
-    column-gap: 1.5rem;
-    border-top: 1px solid var(--second-color);
     padding: 14px 0;
-    box-sizing: border-box; /* Garantir que padding e border não afetem o layout */
+    width: 100vw;
 }
 
 .filter-item {
-    text-transform: capitalize;
     background: var(--button-bg);
-    color: lightskyblue;
-    padding: 10px 16px; /* Aumentei o padding para itens mais espaçados */
-    border-radius: 5px; /* Ajustei o border-radius para uma aparência mais suave */
+    border: 1px solid var(--terminal-border);
+    border-radius: 5px;
+    color: var(--text-light);
+    cursor: pointer;
     font-family: var(--font-tertiary);
-    font-size: 1rem; /* Aumentei o tamanho da fonte para melhor legibilidade */
-    
+    font-size: 1rem;
+    padding: 10px 16px;
+    text-transform: capitalize;
+    transition: background-color var(--transition-duration) var(--transition-timing),
+                box-shadow var(--transition-duration) var(--transition-timing);
 }
 
 .active-filter {
-    text-transform: capitalize;
-    background: var(--button-bg);
-    color: red;
-    padding: 14px 20px; /* Aumentei o padding para dar destaque ao item ativo */
+    background: var(--hover-bg);
+    border: 2px solid var(--font-color);
     border-radius: 5px;
-    font-size: 1.1rem; /* Aumentei o tamanho da fonte para maior destaque */
-}
-
-.active-filter:hover, .filter-item:hover {
+    box-shadow: 0 0 15px var(--shadow-color);
+    color: var(--font-color);
     cursor: pointer;
-    background-color: var(--highlight-bg); /* Cor de fundo alterada no hover */
+    font-family: var(--font-tertiary);
+    font-size: 1.1rem;
+    padding: 14px 20px;
+    text-transform: capitalize;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .post-filter {
-        flex-direction: column; /* Coloca os itens do filtro em uma coluna */
-        row-gap: 1rem; /* Adiciona espaço entre as opções quando em coluna */
-        padding: 12px 10px; /* Ajusta o padding para telas menores */
-    }
-
-    .filter-item, .active-filter {
-        font-size: 0.9rem; /* Reduz o tamanho da fonte para melhor adaptação */
-        padding: 8px 12px; /* Ajusta o padding para itens menores */
-        width: 100%; /* Faz com que os filtros se ajustem à largura da tela */
-        text-align: center; /* Centraliza o texto nos itens */
-    }
+.active-filter:hover,
+.filter-item:hover {
+    background-color: var(--highlight-bg);
+    box-shadow: 0 0 10px var(--shadow-color);
+    color: var(--font-color);
 }

@@ -1,229 +1,154 @@
 @import url("/assets/css/root.css");
 
-/* ----------- Home Section ----------- */
+/* ------------------------------------------------------------- */
+/* Home Section (Hero) */
+/* ------------------------------------------------------------- */
 .home {
-    width: 100vw;
-    background-color: black;
+    align-items: center;
+    background-color: var(--bg-color);
     box-sizing: border-box;
-    overflow: hidden;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 20px 10px;
+    overflow: hidden;
+    padding: 40px 10px;
+    width: 100vw;
 }
 
 .home-container {
-    width: 50%;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
     padding: 24px 0;
-    box-sizing: border-box;
+    text-align: center;
+    width: 70%;
+    max-width: 900px;
 }
 
 .home-title {
-    color: var(--second-color);
+    color: var(--font-color);
     font-family: var(--font-primary);
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px var(--shadow-color);
 }
 
 .home-subtitle {
+    color: var(--text-light);
     font-family: var(--font-secondary);
-    font-size: 1rem;
-    color: var(--shadow-color);
+    font-size: 1.2rem;
     text-align: center;
 }
 
-/* ----------- Posts Grid Container ----------- */
+/* ------------------------------------------------------------- */
+/* Posts Grid Container (onde os cards de resumo aparecem) */
+/* ------------------------------------------------------------- */
 .posts-container {
-    background: var(--container-color);
-    width: 100%;
-    max-width: 100vw;
+    background: var(--bg-color); /* Alterado de container-color para bg-color para consistência */
+    box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 20px;
-    padding: 20px;
-    box-sizing: border-box;
+    justify-content: center;
+    max-width: 100vw;
+    padding: 30px;
+    width: 100%;
 }
 
-/* ----------- Post Card ----------- */
+/* ------------------------------------------------------------- */
+/* Post Card (o link clicável para o resumo) */
+/* ------------------------------------------------------------- */
 .post-article {
-    flex: 1 1 calc(25% - 40px); /* Máximo de 4 por linha com gap */
-    max-width: calc(25% - 40px);
-    min-width: 250px;
-    background-color: lightgray;
-    border: 2px solid lightgreen;
+    /* Este é o estilo para o CARD clicável que aparece no index.html */
+    align-items: flex-start; /* <--- MODIFICADO: Alinha os itens do card à esquerda */
+    background-color: #1a1a1a;
+    border: 2px solid var(--terminal-border);
     border-radius: 8px;
-    padding: 15px;
     box-sizing: border-box;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin: 10px 0;
-    transition: all 0.3s ease;
+    height: 320px; /* Mantido: Altura fixa para o card */
+    justify-content: flex-start; /* Mantido: Conteúdo começa do topo */
+    overflow: hidden; /* Importante para o line-clamp */
+    padding: 20px;
+    position: relative;
+    text-align: left; /* <--- MODIFICADO: Todo o texto dentro do card é alinhado à esquerda */
+    transition: all var(--transition-duration) ease-in-out;
+    width: 320px;
+    text-decoration: none; /* Garante que o <a> não tenha sublinhado por padrão */
+}
+
+.post-article::before {
+    border: 2px solid transparent;
+    border-radius: 8px;
+    bottom: 0;
+    content: '';
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: border-color var(--transition-duration) var(--transition-timing),
+                box-shadow var(--transition-duration) var(--transition-timing);
 }
 
 .post-article:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 20px var(--shadow-color), inset 0 0 10px var(--shadow-color);
+    transform: translateY(-5px) scale(1.02);
 }
 
-.post-title {
+.post-article:hover::before {
+    border-color: var(--font-color);
+}
+
+/* Título do Post no CARD (resumo) */
+.post-article .post-title {
+    color: var(--font-color);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* Limita o título a 3 linhas no card */
     font-family: var(--font-primary);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
-    text-align: center;
-    color: #333;
-    line-height: 2rem;
-    margin: 0 0 10px 0;
-    word-break: break-word;
+    margin: 10px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    text-align: left; /* <--- Adicionado: Garante alinhamento à esquerda */
+    width: 100%; /* Garante que o título ocupe toda a largura */
 }
 
-.post-content {
-    font-size: 1rem;
-    line-height: 1.5rem;
+/* Conteúdo do Post no CARD (resumo) */
+.post-article .post-content {
+    color: var(--text-light);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5; /* <--- Reduzido para dar mais espaço ao "Leia Mais". Ajuste conforme necessário. */
+    font-family: var(--font-secondary);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 10px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left; /* <--- Adicionado: Garante alinhamento à esquerda */
+    flex-grow: 1; /* <--- Adicionado: Faz o conteúdo crescer para preencher o espaço restante */
+}
+
+.home-post-link { /* Este é o "Leia Mais" dentro do card */
+    color: var(--second-color);
     font-family: var(--font-tertiary);
-    word-break: break-word;
-    text-align: center;
-}
-
-.home-post-link {
-    font-size: 1rem;
-    color: #007BFF;
+    font-size: 0.9rem;
+    margin-top: auto; /* <--- MODIFICADO: Empurra o link para o final do flex container */
     text-decoration: none;
-    margin-top: 10px;
+    text-transform: uppercase;
+    transition: color var(--transition-duration) var(--transition-timing);
+    align-self: flex-start; /* <--- Adicionado: Alinha o próprio link à esquerda */
 }
 
 .home-post-link:hover {
+    color: var(--highlight-bg);
     text-decoration: underline;
-    color: #0056b3;
 }
 
-/* ----------- Post Section (individual post view) ----------- */
-.post-section {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--bg-color);
-}
-
-#matrix {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.post-container {
-    position: relative;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 24px;
-    border-radius: 5%;
-    width: 100%;
-    max-width: 800px;
-    text-align: center;
-    color: white;
-    z-index: 1;
-    word-break: break-word;
-    letter-spacing: 0.5px;
-}
-
-.post-container .post-title {
-    font-size: 2.5rem;
-    letter-spacing: 1px;
-    margin: 0;
-}
-
-.post-container .post-content {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #fff;
-    margin: 20px 0;
-    letter-spacing: 0.8px;
-}
-
-.post-date,
-.post-category {
-    font-size: 1rem;
-    color: #bbb;
-    margin: 10px 0;
-}
-
-/* ----------- Responsividade ----------- */
-@media (max-width: 1024px) {
-    .post-article {
-        flex: 1 1 calc(33.33% - 40px);
-        max-width: calc(33.33% - 40px);
-    }
-}
-
-@media (max-width: 768px) {
-    .home-container {
-        width: 90%;
-        padding: 10px 0;
-    }
-
-    .home-title {
-        font-size: 1.5rem;
-    }
-
-    .home-subtitle {
-        font-size: 0.9rem;
-    }
-
-    .post-article {
-        flex: 1 1 calc(50% - 40px);
-        max-width: calc(50% - 40px);
-        padding: 12px;
-    }
-
-    .post-title {
-        font-size: 1.3rem;
-        line-height: 1.8rem;
-    }
-
-    .post-content {
-        font-size: 0.9rem;
-        line-height: 1.4rem;
-    }
-
-    .post-section {
-        height: auto;
-        padding: 20px 10px;
-    }
-
-    .post-container {
-        width: 85%;
-        padding: 16px;
-        border-radius: 8px;
-    }
-
-    .post-container .post-title {
-        font-size: 2rem;
-        letter-spacing: 0.5px;
-    }
-
-    .post-container .post-content {
-        font-size: 1rem;
-        letter-spacing: 0.5px;
-    }
-
-    .post-date,
-    .post-category {
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .post-article {
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
-}

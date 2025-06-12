@@ -1,30 +1,32 @@
 :root {
-    --container-color: #0f0f0f;
-    --second-color: #39ff14;
-    --text-color: #66d9ef;
-    --bg-color: #1a1a1a;
-    --title-color: #00ff99;
-    --link-color: #66d9ef;
-    --link-hover-color: #39ff14;
-    --button-bg: #333333;
-    --button-text: #39ff14;
-    --button-hover-bg: #1c1c1c;
-    --button-hover-text: #ffffff;
-    --shadow-color: rgba(57, 255, 20, 0.3);
-    --error-color: #ff5555;
-    --success-color: #50fa7b;
-    --warning-color: #f1fa8c;
-    --info-color: #8be9fd;
-    --code-bg: #222222;
-    --highlight-bg: #444444;
-    --input-bg: #333333;
-    --input-border-color: #555555;
-    
-    --font-primary: 'Roboto Mono', monospace;
-    --font-secondary: 'Press Start 2P', cursive;
-    --font-tertiary: 'Courier New', monospace;
-    --font-quaternary: 'Space Mono', monospace;
-   
+    /* Cores do Tema Hacker */
+    --bg-color: #0d0d0d; /* Fundo principal (quase preto) */
+    --button-bg: #004d00; /* Botões (verde escuro) */
+    --error-color: #ff5555; /* Cor de erro */
+    --font-color: #00ff00; /* Cor principal do texto (verde neon) */
+    --highlight-bg: #008000; /* Fundo de destaque/hover (verde mais claro) */
+    --hover-bg: #006600; /* Fundo ao passar o mouse (verde médio) */
+    --info-color: #8be9fd; /* Cor de informação */
+    --input-bg: #333333; /* Fundo de input */
+    --input-border-color: #555555; /* Borda de input */
+    --link-color: #66d9ef; /* Cor de link */
+    --link-hover-color: #39ff14; /* Cor de link ao passar o mouse */
+    --second-color: #6a0dad; /* Cor secundária (roxo profundo) */
+    --shadow-color: rgba(0, 255, 0, 0.4); /* Sombra/detalhe (verde translúcido) */
+    --success-color: #50fa7b; /* Cor de sucesso */
+    --terminal-border: #33ff33; /* Borda de elementos (verde vibrante) */
+    --text-color: #66d9ef; /* Cor de texto geral (mantido do original) */
+    --text-light: #ccffcc; /* Texto claro (verde pastel) */
+    --title-color: #00ff00; /* Títulos (verde neon) */
+    --warning-color: #f1fa8c; /* Cor de aviso */
+
+    /* Fontes do Tema Hacker */
+    --font-primary: 'Fira Code', monospace; /* Fonte para código/terminal */
+    --font-secondary: 'Rajdhani', sans-serif; /* Fonte complementar */
+    --font-tertiary: 'Share Tech Mono', monospace; /* Outra fonte mono */
+    --font-quaternary: 'Space Mono', monospace; /* Outra fonte mono */
+
+    /* Transições */
     --transition-duration: 0.3s;
     --transition-timing: ease-in-out;
 }
