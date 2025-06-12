@@ -108,7 +108,7 @@ class PostManagerApp:
         
         # --- Configuração de Tamanho e Centralização da Janela ---
         window_width = 800
-        window_height = 600
+        window_height = 650
         screen_width = master.winfo_screenwidth()
         screen_height = master.winfo_screenheight()
         center_x = int(screen_width/2 - window_width/2)
@@ -238,9 +238,9 @@ class PostManagerApp:
             self._load_posts_to_listbox(self.delete_post_listbox)
             self._load_posts_to_listbox(self.edit_post_listbox)
         elif selected_tab == "Git":
-            # Limpa a saída do Git ao mudar para a aba
-            self.git_output_text.delete(1.0, tk.END)
-            self._set_status_message("Aba Git Ativada.", "info")
+            self._check_git_status() # Verifica o status do Git ao entrar na aba
+            self.git_output_text.delete(1.0, tk.END) # Limpa a saída do Git ao mudar para a aba
+            self._set_status_message("Aba Git Ativada. Verifique o status do seu projeto Git abaixo.", "info")
 
 
     def _set_status_message(self, message, message_type="info"):
@@ -403,61 +403,89 @@ class PostManagerApp:
 
 
     def _setup_git_tab(self, tab_frame):
-        # Configuração da aba Git
-        tk.Label(tab_frame, text="URL do Repositório Git:").grid(row=0, column=0, sticky="w")
+        # Explicação de como usar a aba
+        tk.Label(tab_frame, text="=== COMO USAR O GIT AQUI ===", fg="#00ff00").grid(row=0, column=0, columnspan=2, sticky="w", pady=(0, 5))
+        tk.Label(tab_frame, text="1. Cole o 'endereço' (URL) do seu projeto Git no campo abaixo.").grid(row=1, column=0, columnspan=2, sticky="w")
+        tk.Label(tab_frame, text="2. O 'Caminho Local' é onde o projeto ficará no seu computador.").grid(row=2, column=0, columnspan=2, sticky="w")
+        tk.Label(tab_frame, text="3. A 'Branch' é a 'versão' do seu projeto (geralmente 'main' ou 'master').").grid(row=3, column=0, columnspan=2, sticky="w")
+        tk.Label(tab_frame, text="").grid(row=4, column=0, columnspan=2) # Espaçador
+
+
+        tk.Label(tab_frame, text="Endereço do Projeto Git (URL):").grid(row=5, column=0, sticky="w")
         self.git_repo_url_entry = tk.Entry(tab_frame, width=70)
-        self.git_repo_url_entry.grid(row=0, column=1, sticky="ew", pady=5)
+        self.git_repo_url_entry.grid(row=5, column=1, sticky="ew", pady=5)
         self.git_repo_url_entry.insert(0, "https://github.com/seu-usuario/seu-repositorio.git") # Exemplo
         
-        tk.Label(tab_frame, text="Caminho Local (onde estará o projeto):").grid(row=1, column=0, sticky="w")
+        tk.Label(tab_frame, text="Caminho Local (pasta no seu PC):").grid(row=6, column=0, sticky="w")
         self.git_local_path_entry = tk.Entry(tab_frame, width=70)
-        self.git_local_path_entry.grid(row=1, column=1, sticky="ew", pady=5)
+        self.git_local_path_entry.grid(row=6, column=1, sticky="ew", pady=5)
         self.git_local_path_entry.insert(0, os.getcwd()) # Padrão para o diretório atual do script
 
-        tk.Label(tab_frame, text="Nome da Branch (Ex: main, master):").grid(row=2, column=0, sticky="w")
+        tk.Label(tab_frame, text="Branch (Ex: main ou master):").grid(row=7, column=0, sticky="w")
         self.git_branch_entry = tk.Entry(tab_frame, width=70)
-        self.git_branch_entry.grid(row=2, column=1, sticky="ew", pady=5)
+        self.git_branch_entry.grid(row=7, column=1, sticky="ew", pady=5)
         self.git_branch_entry.insert(0, "main") # Branch padrão
 
         # Botões de Operação Git
         git_buttons_frame = tk.Frame(tab_frame)
-        git_buttons_frame.grid(row=3, column=0, columnspan=2, pady=10)
+        git_buttons_frame.grid(row=8, column=0, columnspan=2, pady=10)
 
-        tk.Button(git_buttons_frame, text="CONECTAR / CLONAR", command=self._connect_clone_gui).pack(side=tk.LEFT, padx=5, pady=5)
-        tk.Button(git_buttons_frame, text="BAIXAR ATUALIZAÇÕES", command=self._pull_gui).pack(side=tk.LEFT, padx=5, pady=5)
-        tk.Button(git_buttons_frame, text="ADICIONAR & COMMITAR", command=self._add_commit_gui).pack(side=tk.LEFT, padx=5, pady=5)
-        tk.Button(git_buttons_frame, text="ENVIAR ALTERAÇÕES", command=self._push_gui).pack(side=tk.LEFT, padx=5, pady=5)
+        tk.Button(git_buttons_frame, text="BAIXAR MEU PROJETO", command=self._connect_clone_gui).pack(side=tk.LEFT, padx=5, pady=5)
+        tk.Button(git_buttons_frame, text="OBTER ATUALIZAÇÕES", command=self._pull_gui).pack(side=tk.LEFT, padx=5, pady=5)
+        tk.Button(git_buttons_frame, text="SALVAR MINHAS ALTERAÇÕES", command=self._add_commit_gui).pack(side=tk.LEFT, padx=5, pady=5)
+        tk.Button(git_buttons_frame, text="ENVIAR MINHAS ALTERAÇÕES", command=self._push_gui).pack(side=tk.LEFT, padx=5, pady=5)
 
-        tk.Label(tab_frame, text="Saída dos Comandos Git:").grid(row=4, column=0, sticky="w", columnspan=2, pady=(10,0))
-        self.git_output_text = scrolledtext.ScrolledText(tab_frame, wrap=tk.WORD, height=15, width=70)
-        self.git_output_text.grid(row=5, column=0, columnspan=2, sticky="nsew", pady=5)
+        tk.Label(tab_frame, text="Saída dos Comandos Git (o que está acontecendo):").grid(row=9, column=0, sticky="w", columnspan=2, pady=(10,0))
+        self.git_output_text = scrolledtext.ScrolledText(tab_frame, wrap=tk.WORD, height=10, width=70)
+        self.git_output_text.grid(row=10, column=0, columnspan=2, sticky="nsew", pady=5)
 
         tab_frame.grid_columnconfigure(1, weight=1)
-        tab_frame.grid_rowconfigure(5, weight=1)
+        tab_frame.grid_rowconfigure(10, weight=1) # A ScrolledText vai expandir
+
+    def _check_git_status(self):
+        """Verifica se o diretório local é um repositório Git e atualiza a interface."""
+        local_path = self.git_local_path_entry.get().strip()
+        self.git_output_text.delete(1.0, tk.END) # Limpa a saída
+
+        if not os.path.exists(local_path):
+            self.git_output_text.insert(tk.END, f"PASTA NÃO ENCONTRADA: '{local_path}'. Você precisa baixar o projeto primeiro.\n")
+            self._set_status_message("PASTA DO PROJETO NÃO ENCONTRADA.", "warning")
+            return
+        
+        git_dir = os.path.join(local_path, ".git")
+        if os.path.exists(git_dir) and os.path.isdir(git_dir):
+            self.git_output_text.insert(tk.END, f"STATUS: A pasta '{local_path}' JÁ É UM PROJETO GIT.\n")
+            self._set_status_message("PROJETO GIT ENCONTRADO.", "success")
+            # Tenta obter o status do repositório
+            self._run_git_command(["git", "status"], cwd=local_path)
+            self._run_git_command(["git", "branch", "--show-current"], cwd=local_path)
+        else:
+            self.git_output_text.insert(tk.END, f"STATUS: A pasta '{local_path}' AINDA NÃO É UM PROJETO GIT. Use 'BAIXAR MEU PROJETO' para começar.\n")
+            self._set_status_message("PROJETO GIT NÃO ENCONTRADO NESSA PASTA.", "info")
 
 
     def _run_git_command(self, command_list, cwd=None):
         """Executa um comando Git e exibe a saída no ScrolledText."""
-        self.git_output_text.insert(tk.END, f"\n--- Executando: {' '.join(command_list)} ---\n")
+        self.git_output_text.insert(tk.END, f"\n--- EXECUTANDO: {' '.join(command_list)} ---\n")
         self.git_output_text.see(tk.END)
         self.master.update_idletasks() # Atualiza a GUI para mostrar a mensagem
 
         try:
             process = subprocess.run(command_list, cwd=cwd, capture_output=True, text=True, check=True, encoding='utf-8')
             self.git_output_text.insert(tk.END, process.stdout)
-            self._set_status_message(f"COMANDO GIT EXECUTADO COM SUCESSO!", "success")
+            self._set_status_message(f"COMANDO EXECUTADO COM SUCESSO!", "success")
             return True
         except subprocess.CalledProcessError as e:
             self.git_output_text.insert(tk.END, f"\nERRO (Código {e.returncode}):\n{e.stderr}")
-            self._set_status_message(f"ERRO AO EXECUTAR COMANDO GIT: {e.cmd}", "error")
+            self._set_status_message(f"OPS! ALGO DEU ERRADO: {e.cmd}", "error")
             return False
         except FileNotFoundError:
-            self.git_output_text.insert(tk.END, "\nERRO: Comando 'git' não encontrado. Certifique-se de que o Git está instalado e no seu PATH.\n")
-            self._set_status_message("ERRO: GIT NÃO INSTALADO OU NÃO ENCONTRADO NO PATH.", "error")
+            self.git_output_text.insert(tk.END, "\nERRO: O programa 'git' não foi encontrado. Verifique se o Git está instalado no seu computador.\n")
+            self._set_status_message("ERRO: PROGRAMA GIT NÃO ENCONTRADO.", "error")
             return False
         except Exception as e:
             self.git_output_text.insert(tk.END, f"\nERRO INESPERADO: {e}\n")
-            self._set_status_message(f"ERRO INESPERADO AO EXECUTAR GIT: {e}", "error")
+            self._set_status_message(f"ERRO DESCONHECIDO AO USAR O GIT: {e}", "error")
             return False
         finally:
             self.git_output_text.see(tk.END) # Garante que a saída mais recente seja visível
@@ -467,64 +495,76 @@ class PostManagerApp:
         local_path = self.git_local_path_entry.get().strip()
 
         if not repo_url:
-            self._set_status_message("A URL DO REPOSITÓRIO NÃO PODE ESTAR VAZIA.", "warning")
+            self._set_status_message("O 'Endereço do Projeto Git' não pode estar vazio.", "warning")
             return
         if not local_path:
-            self._set_status_message("O CAMINHO LOCAL NÃO PODE ESTAR VAZIO.", "warning")
+            self._set_status_message("O 'Caminho Local' não pode estar vazio.", "warning")
             return
 
         if os.path.exists(os.path.join(local_path, ".git")):
-            self._set_status_message(f"O diretório '{local_path}' já parece ser um repositório Git. Tentando 'PULL' em vez de 'CLONE'.", "info")
+            self._set_status_message(f"Essa pasta ('{local_path}') já é um projeto Git. Vou tentar 'Obter Atualizações' em vez de baixar tudo de novo.", "info")
             self._pull_gui() # Se já for um repo, tenta puxar
         elif os.path.exists(local_path) and len(os.listdir(local_path)) > 0:
-             messagebox.showerror("Diretório Não Vazio", f"O diretório '{local_path}' existe e não está vazio. Por favor, especifique um diretório vazio para clonar, ou um diretório que não existe.")
-             self._set_status_message(f"Diretório '{local_path}' não vazio.", "error")
+             messagebox.showerror("Pasta Não Vazia", f"A pasta '{local_path}' já existe e não está vazia. Por favor, escolha uma pasta vazia para baixar o projeto, ou uma pasta que ainda não existe (ela será criada).")
+             self._set_status_message(f"Pasta '{local_path}' não está vazia. Escolha outra.", "error")
         else:
-            self._set_status_message(f"Clonando repositório de '{repo_url}' para '{local_path}'...", "info")
-            if self._run_git_command(["git", "clone", repo_url, local_path], cwd=os.path.dirname(local_path) or None):
-                self._set_status_message("CLONE CONCLUÍDO COM SUCESSO!", "success")
+            self._set_status_message(f"Baixando o projeto de '{repo_url}' para a pasta '{local_path}'...", "info")
+            # Para clonar no 'local_path', o comando 'git clone' deve ser executado no DIRETÓRIO PAI do 'local_path'
+            parent_dir = os.path.dirname(local_path)
+            clone_dir_name = os.path.basename(local_path)
+            
+            # Se parent_dir for vazio, significa que local_path é um nome de diretório no CWD
+            if not parent_dir: 
+                parent_dir = os.getcwd()
+                clone_dir_name = local_path # o nome do diretório a ser criado é o próprio local_path
+            
+            if self._run_git_command(["git", "clone", repo_url, clone_dir_name], cwd=parent_dir):
+                self._set_status_message("PROJETO BAIXADO COM SUCESSO! Agora você pode 'Obter Atualizações' ou 'Salvar/Enviar' suas alterações.", "success")
             else:
-                self._set_status_message("FALHA AO CLONAR O REPOSITÓRIO.", "error")
+                self._set_status_message("NÃO FOI POSSÍVEL BAIXAR O PROJETO. Verifique o endereço do Git.", "error")
+        self._check_git_status() # Atualiza o status após a operação
 
     def _pull_gui(self):
         local_path = self.git_local_path_entry.get().strip()
         branch = self.git_branch_entry.get().strip()
 
         if not os.path.exists(os.path.join(local_path, ".git")):
-            self._set_status_message("O CAMINHO LOCAL NÃO É UM REPOSITÓRIO GIT VÁLIDO. Tente CLONAR primeiro.", "warning")
+            self._set_status_message("Essa pasta NÃO É UM PROJETO GIT. Use 'BAIXAR MEU PROJETO' primeiro.", "warning")
             return
         if not branch:
-            self._set_status_message("O NOME DA BRANCH NÃO PODE ESTAR VAZIO.", "warning")
+            self._set_status_message("O nome da 'Branch' não pode estar vazio.", "warning")
             return
 
-        self._set_status_message(f"Baixando atualizações da branch '{branch}' em '{local_path}'...", "info")
+        self._set_status_message(f"Obtendo as últimas atualizações da 'Branch' '{branch}'...", "info")
         if self._run_git_command(["git", "pull", "origin", branch], cwd=local_path):
-            self._set_status_message("ATUALIZAÇÕES BAIXADAS COM SUCESSO!", "success")
+            self._set_status_message("ATUALIZAÇÕES OBTIDAS COM SUCESSO!", "success")
         else:
-            self._set_status_message("FALHA AO BAIXAR ATUALIZAÇÕES.", "error")
+            self._set_status_message("NÃO FOI POSSÍVEL OBTER AS ATUALIZAÇÕES. Verifique sua conexão ou se a Branch está correta.", "error")
+        self._check_git_status() # Atualiza o status após a operação
 
     def _add_commit_gui(self):
         local_path = self.git_local_path_entry.get().strip()
 
         if not os.path.exists(os.path.join(local_path, ".git")):
-            self._set_status_message("O CAMINHO LOCAL NÃO É UM REPOSITÓRIO GIT VÁLIDO. Tente CLONAR primeiro.", "warning")
+            self._set_status_message("Essa pasta NÃO É UM PROJETO GIT. Use 'BAIXAR MEU PROJETO' primeiro.", "warning")
             return
 
-        self._set_status_message(f"Adicionando arquivos para commit em '{local_path}'...", "info")
+        self._set_status_message(f"Preparando todas as suas alterações para salvar...", "info")
         if not self._run_git_command(["git", "add", "."], cwd=local_path):
-            self._set_status_message("FALHA AO ADICIONAR ARQUIVOS.", "error")
+            self._set_status_message("NÃO FOI POSSÍVEL PREPARAR AS ALTERAÇÕES.", "error")
             return
 
-        commit_message = simpledialog.askstring("Mensagem de Commit", "Digite a mensagem para o commit:", parent=self.master)
+        commit_message = simpledialog.askstring("Mensagem para Salvar", "O que você mudou ou adicionou? (Ex: 'Adicionei nova aba de posts', 'Corrigi erro no footer')", parent=self.master)
         if not commit_message:
-            commit_message = "Atualização automática via app" # Mensagem padrão se o usuário cancelar ou deixar vazio
-            self._set_status_message("Mensagem de commit vazia ou cancelada. Usando mensagem padrão.", "info")
+            commit_message = "Alterações salvas automaticamente pelo aplicativo" # Mensagem padrão
+            self._set_status_message("Você não digitou uma mensagem. Usando mensagem padrão para salvar.", "info")
 
-        self._set_status_message(f"Commitando alterações com a mensagem: '{commit_message}'...", "info")
+        self._set_status_message(f"Salvando suas alterações com a mensagem: '{commit_message}'...", "info")
         if self._run_git_command(["git", "commit", "-m", commit_message], cwd=local_path):
-            self._set_status_message("COMMIT REALIZADO COM SUCESSO!", "success")
+            self._set_status_message("SUAS ALTERAÇÕES FORAM SALVAS NO SEU COMPUTADOR! Agora você pode 'Enviar suas Alterações' para o Git.", "success")
         else:
-            self._set_status_message("FALHA AO REALIZAR O COMMIT.", "error")
+            self._set_status_message("NÃO FOI POSSÍVEL SALVAR SUAS ALTERAÇÕES. Verifique se há algo para salvar.", "error")
+        self._check_git_status() # Atualiza o status após a operação
 
 
     def _push_gui(self):
@@ -532,17 +572,18 @@ class PostManagerApp:
         branch = self.git_branch_entry.get().strip()
 
         if not os.path.exists(os.path.join(local_path, ".git")):
-            self._set_status_message("O CAMINHO LOCAL NÃO É UM REPOSITÓRIO GIT VÁLIDO. Tente CLONAR primeiro.", "warning")
+            self._set_status_message("Essa pasta NÃO É UM PROJETO GIT. Use 'BAIXAR MEU PROJETO' primeiro.", "warning")
             return
         if not branch:
-            self._set_status_message("O NOME DA BRANCH NÃO PODE ESTAR VAZIO.", "warning")
+            self._set_status_message("O nome da 'Branch' não pode estar vazio.", "warning")
             return
 
-        self._set_status_message(f"Enviando alterações da branch '{branch}' para o remoto em '{local_path}'...", "info")
+        self._set_status_message(f"Enviando suas alterações salvas para o Git...", "info")
         if self._run_git_command(["git", "push", "origin", branch], cwd=local_path):
-            self._set_status_message("ALTERAÇÕES ENVIADAS COM SUCESSO!", "success")
+            self._set_status_message("SUAS ALTERAÇÕES FORAM ENVIADAS COM SUCESSO PARA O GIT!", "success")
         else:
-            self._set_status_message("FALHA AO ENVIAR ALTERAÇÕES.", "error")
+            self._set_status_message("NÃO FOI POSSÍVEL ENVIAR SUAS ALTERAÇÕES. Verifique sua conexão com a internet ou se você tem permissão.", "error")
+        self._check_git_status() # Atualiza o status após a operação
 
 
     def _load_posts_to_listbox(self, listbox_widget):
