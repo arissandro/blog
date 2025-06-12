@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Hreff - Seu blog de tecnologia e hacking." />
+    <meta name="keywords" content="blog, tecnologia, hacking, programação, segurança" />
+    <meta name="author" content="Hreff Team" />
+
+    <title>Hreff - Blog Hacker</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+
+    <link rel="stylesheet" href="/assets/css/root.css" />
+    <link rel="stylesheet" href="/assets/css/reset.css" />
+    <link rel="stylesheet" href="/assets/css/header.css" />
+    <link rel="stylesheet" href="/assets/css/home.css" />
+    <link rel="stylesheet" href="/assets/css/home-filter.css" />
+    <link rel="stylesheet" href="/assets/css/table.css" />
+    <link rel="stylesheet" href="/assets/css/footer.css" />
+    <link rel="stylesheet" href="/assets/css/responsive.css" />
+</head>
+
+<body>
+    <header class="header">
+        <a class="header-title" href="/">
+            H<span>reff</span>.
+        </a>
+        <div class="header-container">
+            <nav class="header-container-menu" aria-label="Menu Principal">
+                <ul class="header-container-menu-list">
+                    <li class="header-container-menu-list-item">
+                        <a class="header-container-menu-list-item-link" href="/about.html">Sobre</a>
+                    </li>
+                    <li class="header-container-menu-list-item">
+                        <a class="header-container-menu-list-item-link" href="#categories">Categorias</a>
+                    </li>
+                    <li class="header-container-menu-list-item">
+                        <a class="header-container-menu-list-item-link" href="#latest-posts">Últimos Posts</a>
+                    </li>
+                    <li class="header-container-menu-list-item">
+                        <a class="header-container-menu-list-item-link" href="#contact">Contato</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" id="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="home" aria-labelledby="home-main-title">
+            <div class="home-container">
+                <h1 id="home-main-title" class="home-title">Loading.sh</h1>
+                <p class="home-subtitle">
+                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim quidem est
+                    exercitationem voluptatibus facere sed, fugit veniam architecto temporibus.
+                    Aliquam amet porro commodi quod iusto, dicta magni natus blanditiis quibusdam."
+                    <span class="home-subtitle-author">by - lorem</span>
+                </p>
+            </div>
+        </section>
+
+        <section class="post-filter container" aria-labelledby="filter-posts-title">
+            <span class="filter-item active-filter" data-filter="all">Todos</span>
+            <span class="filter-item" data-filter="blue">Blue Team</span>
+            <span class="filter-item" data-filter="red">Red Team</span>
+            <span class="filter-item" data-filter="dev">Desenvolvimento</span>
+            <span class="filter-item" data-filter="cybersec">Cibersegurança</span>
+        </section>
+
+        <section id="posts-container" class="posts-container" aria-labelledby="blog-posts-title"></section>
+    </main>
+<div>djsshsd</div>
+    <footer class="footer container" role="contentinfo">
+        <p>&copy; <span id="current-year"></span> All Rights Reserved to Hreff.</p>
+        <div class="social">
+            <a href="https://br.linkedin.com/in/arissandro" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Arissandro">
+                <i class="bx bxl-linkedin"></i>
+            </a>
+            </div>
+    </footer>
+
+    <script>
+        // Função para obter o ano atual dinamicamente para o rodapé
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Lista de arquivos de post a serem carregados
+        const postFiles = [
+            { file: 'posts/Um-Post-da-Dark-Web.html', url: 'posts/Um-Post-da-Dark-Web.html', categories: 'blue,dev' },
+            { file: 'posts/NaNo-Comandos.html', url: 'posts/NaNo-Comandos.html', categories: 'red,cybersec' }
+        ];
+
+        const postsContainer = document.getElementById('posts-container');
+
+        /**
+         * Carrega o conteúdo de uma página de post completa, extrai o resumo
+         * e insere-o como um card clicável no container.
+         * @param {object} postData - Objeto contendo file (URL do post completo), url (URL para o link do card) e categories.
+         */
+        async function loadPost(postData) {
+            try {
+                const response = await fetch(postData.file);
+                if (!response.ok) {
+                    throw new Error(`Erro ao carregar o post completo ${postData.file}: ${response.statusText}`);
+                }
+                const fullHtml = await response.text();
+
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = fullHtml;
+
+                const postTitleElement = tempDiv.querySelector('.post-full-title');
+                const postContentElements = tempDiv.querySelectorAll('.post-full-content p');
+
+                let title = postTitleElement ? postTitleElement.textContent : 'Título Desconhecido';
+                let summaryContent = '';
+                if (postContentElements.length > 0) {
+                    summaryContent = postContentElements[0].textContent;
+                } else {
+                    summaryContent = 'Nenhum resumo disponível.';
+                }
+
+                const postLink = document.createElement('a');
+                postLink.href = postData.url;
+                postLink.className = 'post-article';
+                postLink.setAttribute('data-categories', postData.categories);
+
+                postLink.innerHTML = `
+                    <h3 class="post-title">${title}</h3>
+                    <p class="post-content">${summaryContent}</p>
+                    <span class="home-post-link">Leia Mais</span>
+                `;
+
+                postsContainer.appendChild(postLink);
+            } catch (error) {
+                console.error(error);
+                const errorDiv = document.createElement('div');
+                errorDiv.textContent = `Não foi possível carregar o post para gerar o resumo de ${postData.file}.`;
+                errorDiv.style.color = 'var(--error-color)';
+                postsContainer.appendChild(errorDiv);
+            }
+        }
+
+        // Carrega todos os posts ao carregar a página
+        postFiles.forEach(post => loadPost(post));
+
+        // --- Lógica de Responsividade Dinâmica (Menu e Categorias) ---
+
+        const header = document.querySelector('.header');
+        const headerContainerMenu = document.querySelector('.header-container-menu');
+        const menuToggle = document.getElementById('menu-toggle');
+        const postFilter = document.querySelector('.post-filter');
+        const filterItems = document.querySelectorAll('.filter-item');
+
+        const breakpointMobile = 768; // Defina o breakpoint para mobile/tablet
+
+        // Função para aplicar/remover estilos baseados na largura da tela
+        function applyResponsiveStyles() {
+            if (window.innerWidth <= breakpointMobile) {
+                // Mobile/Tablet
+                // Header: Título e hambúrguer lado a lado
+                header.style.flexDirection = 'row';
+                header.style.justifyContent = 'space-between';
+                header.style.alignItems = 'center';
+
+                // Menu (Oculto por padrão, mas *agora APENAS pelo CSS*, não por inline style JS)
+                // REMOVIDA: headerContainerMenu.style.display = 'none'; // Esta linha causava o problema!
+                headerContainerMenu.style.position = 'fixed';
+                headerContainerMenu.style.top = '0';
+                headerContainerMenu.style.width = '70%';
+                headerContainerMenu.style.height = '100vh';
+                headerContainerMenu.style.right = '-100%'; // Inicia fora da tela
+                headerContainerMenu.style.transition = 'right 0.3s ease-in-out'; // Transição suave
+
+                // Filtro de Categorias: Horizontal e rolavel
+                postFilter.style.display = 'flex';
+                postFilter.style.flexWrap = 'nowrap';
+                postFilter.style.overflowX = 'auto';
+                postFilter.style.justifyContent = 'flex-start';
+                postFilter.style.columnGap = '0.8rem';
+                postFilter.style.whiteSpace = 'nowrap'; // Impede quebra de linha do texto
+
+                filterItems.forEach(item => {
+                    item.style.flexShrink = '0'; // Impede que os itens encolham
+                });
+
+            } else {
+                // Desktop
+                // Header: Voltar ao estilo padrão do CSS (se houver, ou padrão do header.css)
+                header.style.flexDirection = ''; // Limpa estilo inline
+                header.style.justifyContent = ''; // Limpa estilo inline
+                header.style.alignItems = ''; // Limpa estilo inline
+
+                // Menu: Visível e não fixo (controlado pelo CSS responsivo)
+                headerContainerMenu.style.display = ''; // Limpa estilo inline
+                headerContainerMenu.style.position = ''; // Limpa estilo inline
+                headerContainerMenu.style.top = '';
+                headerContainerMenu.style.width = '';
+                headerContainerMenu.style.height = '';
+                headerContainerMenu.style.right = '';
+                headerContainerMenu.style.transition = '';
+
+                // Filtro de Categorias: Voltar ao estilo padrão do CSS (centralizado, sem rolagem)
+                postFilter.style.display = ''; // Limpa estilo inline
+                postFilter.style.flexWrap = '';
+                postFilter.style.overflowX = '';
+                postFilter.style.justifyContent = '';
+                postFilter.style.columnGap = '';
+                postFilter.style.whiteSpace = '';
+
+                filterItems.forEach(item => {
+                    item.style.flexShrink = '';
+                });
+
+                // Certifica-se de que o menu esteja fechado e a rolagem liberada ao redimensionar para desktop
+                headerContainerMenu.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+                document.documentElement.classList.remove('no-scroll');
+            }
+        }
+
+        // --- Event Listeners para Interatividade ---
+
+        // Listener para o clique no botão do menu hambúrguer
+        menuToggle.addEventListener('click', () => {
+            headerContainerMenu.classList.toggle('active'); // Ativa/desativa a classe para mostrar/ocultar o menu
+            menuToggle.classList.toggle('open'); // ADICIONADO: Alterna a classe 'open' para transformar o ícone
+
+            // Desabilita/habilita a rolagem do corpo quando o menu está aberto/fechado
+            document.body.classList.toggle('no-scroll');
+            document.documentElement.classList.toggle('no-scroll');
+            
+            // Controle da animação de slide via 'right'
+            if (headerContainerMenu.classList.contains('active')) {
+                headerContainerMenu.style.right = '0';
+            } else {
+                headerContainerMenu.style.right = '-100%';
+            }
+        });
+
+        // Lógica de Filtro (permanece a mesma, pois é sobre os posts)
+        filterItems.forEach(item => {
+            item.addEventListener('click', function() {
+                filterItems.forEach(filter => filter.classList.remove('active-filter'));
+                this.classList.add('active-filter');
+
+                const filterValue = this.getAttribute('data-filter');
+                const articles = document.querySelectorAll('.post-article');
+
+                articles.forEach(article => {
+                    const articleCategories = article.getAttribute('data-categories') || '';
+                    if (filterValue === 'all' || articleCategories.includes(filterValue)) {
+                        article.style.display = 'flex';
+                    } else {
+                        article.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Executar a função de estilos responsivos na carga inicial e no redimensionamento
+        window.addEventListener('load', applyResponsiveStyles);
+        window.addEventListener('resize', applyResponsiveStyles);
+    </script>
+</body>
+
+</html>
