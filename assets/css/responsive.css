@@ -1,0 +1,280 @@
+@import url("/assets/css/root.css");
+
+/* ------------------------------------------------------------- */
+/* Responsividade Geral */
+/* Este arquivo deve ser importado por último no HTML para sobrepor estilos */
+/* ------------------------------------------------------------------------- */
+
+/* Adiciona esta regra para impedir a rolagem do corpo quando o menu estiver aberto */
+html.no-scroll, body.no-scroll {
+    overflow: hidden;
+}
+
+/* Base: Oculta o ícone de menu em desktop */
+.menu-toggle {
+    display: none;
+}
+
+/* --- ESTILOS PARA O ÍCONE HAMBÚRGUER CUSTOMIZADO --- */
+.menu-toggle {
+    width: 30px; /* Largura total do ícone */
+    height: 20px; /* Altura total do ícone (3 barras + 2 espaços) */
+    position: relative;
+    cursor: pointer;
+    display: flex; /* Para organizar as barras em coluna */
+    flex-direction: column;
+    justify-content: space-between; /* Espaço igual entre as barras */
+    z-index: 1000; /* Garante que o ícone fique acima de outros elementos */
+    padding: 0; /* Remover qualquer padding extra */
+    margin: 0; /* Remover qualquer margin extra */
+    box-sizing: border-box; /* Incluir padding/border no width/height */
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 100%;
+    height: 3px; /* Espessura de cada barra */
+    background-color: var(--title-color); /* Cor das barras (pode ser ajustada) */
+    border-radius: 3px; /* Bordas arredondadas para as barras */
+    transition: all 0.3s ease-in-out; /* Transição suave para animação */
+}
+
+/* ESTADOS DA ANIMAÇÃO (quando a classe 'open' é adicionada pelo JS) */
+.menu-toggle.open .bar:nth-child(1) {
+    transform: translateY(8.5px) rotate(45deg); /* Barra superior gira e desce */
+}
+
+.menu-toggle.open .bar:nth-child(2) {
+    opacity: 0; /* Barra do meio desaparece */
+}
+
+.menu-toggle.open .bar:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-45deg); /* Barra inferior gira e sobe */
+}
+/* --- FIM DOS ESTILOS HAMBÚRGUER CUSTOMIZADO --- */
+
+
+/* --- Media Query: max-width: 1024px (Tablets e Laptops menores) --- */
+@media (max-width: 1024px) {
+    /* Posts Grid Container - Ajuste para telas maiores de tablet */
+    .posts-container {
+        gap: 15px; /* Reduz o espaçamento entre os cards */
+    }
+
+    /* Home Section - Posts Grid (2 colunas) */
+    .post-article {
+        flex: 1 1 calc(50% - 15px); /* 2 colunas com espaçamento */
+        max-width: calc(50% - 15px);
+        height: 320px;
+    }
+
+    /* Título e Conteúdo do Post no CARD */
+    .post-article .post-title,
+    .post-article .post-content {
+        text-align: left;
+    }
+}
+
+/* --- Media Query: max-width: 768px (Tablets em modo retrato e Smartphones) --- */
+@media (max-width: 768px) {
+    header.header {
+        padding: 16px 20px;
+    }
+
+    .header-title {
+        font-size: 2rem;
+    }
+
+    /* Oculta o menu de navegação padrão em telas menores (será controlado por JS) */
+    .header-container-menu {
+        display: none;
+    }
+
+    /* Mostra o ícone de menu (hambúrguer) - Agora é o seu ícone customizado! */
+    .menu-toggle {
+        display: flex; /* Deve ser 'flex' para exibir as barras */
+    }
+
+    /* Estilos para o menu quando estiver ativo (controlado por JS) */
+    .header-container-menu.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--bg-color);
+        border-left: 1px solid var(--second-color);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.4);
+        height: 100vh;
+        justify-content: center;
+        padding: 60px 0;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70%;
+        z-index: 999;
+    }
+
+    .header-container-menu-list {
+        flex-direction: column;
+        padding: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .header-container-menu-list-item {
+        margin: 15px 0;
+        width: 100%;
+    }
+
+    .header-container-menu-list-item-link {
+        background-color: var(--button-bg);
+        display: block;
+        margin: 0 auto;
+        padding: 15px 20px;
+        width: 90%;
+    }
+
+    /* Home Section (Hero) */
+    .home-container {
+        padding: 10px 0;
+        width: 90%;
+    }
+
+    .home-title {
+        font-size: 2.2rem;
+    }
+
+    .home-subtitle {
+        font-size: 1rem;
+    }
+
+    /* Filtro de Postagens - Ajustes básicos */
+    .post-filter.container {
+        border-bottom: 1px solid var(--second-color);
+        padding: 15px 10px;
+    }
+
+    /* Posts Grid Container */
+    .posts-container {
+        gap: 15px;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    /* Post Card (2 colunas) */
+    .post-article {
+        flex: 1 1 calc(50% - 15px);
+        max-width: calc(50% - 15px);
+        height: 280px;
+        padding: 15px;
+        text-align: left;
+    }
+
+    /* Conteúdo e Título do Post no CARD */
+    .post-article .post-content {
+        -webkit-line-clamp: 6;
+        font-size: 0.85rem;
+        text-align: left;
+    }
+
+    .post-article .post-title {
+        -webkit-line-clamp: 2;
+        font-size: 1rem;
+        text-align: left;
+    }
+
+    .home-post-link {
+        align-self: flex-start;
+        font-size: 0.8rem;
+    }
+
+    /* Post Section (Individual Post View) */
+    .post-section {
+        height: auto;
+        padding: 20px 10px;
+    }
+
+    .post-container {
+        border-radius: 8px;
+        padding: 20px;
+        width: 85%;
+    }
+
+    /* Título e Conteúdo do Post na Página Individual */
+    .post-container .post-content {
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+    }
+
+    .post-container .post-title {
+        font-size: 2rem;
+        letter-spacing: 0.5px;
+    }
+
+    /* Footer */
+    .footer {
+        font-size: 0.9rem;
+        padding: 15px 0;
+    }
+
+    .footer .social a {
+        font-size: 1.5rem;
+        margin: 0 10px;
+    }
+}
+
+/* --- Media Query: max-width: 480px (Smartphones menores) --- */
+@media (max-width: 480px) {
+    /* Header */
+    .header-title {
+        font-size: 1.8rem;
+    }
+
+    /* Home Section (Hero) */
+    .home-title {
+        font-size: 1.8rem;
+    }
+
+    .home-subtitle {
+        font-size: 0.8rem;
+    }
+
+    /* Post Card (1 coluna) */
+    .post-article {
+        flex: 1 1 100%; /* 1 card por linha */
+        max-width: 100%;
+        height: 280px;
+        padding: 10px;
+        text-align: left;
+    }
+
+    /* Conteúdo e Título do Post no CARD */
+    .post-article .post-content {
+        -webkit-line-clamp: 5;
+        font-size: 0.8rem;
+        text-align: left;
+    }
+
+    .post-article .post-title {
+        -webkit-line-clamp: 2;
+        font-size: 0.9rem;
+        text-align: left;
+    }
+
+    .home-post-link {
+        align-self: flex-start;
+    }
+
+    /* Post Section (Individual Post View) */
+    .post-container {
+        padding: 15px;
+    }
+
+    /* Título e Conteúdo do Post na Página Individual */
+    .post-container .post-content {
+        font-size: 0.9rem;
+    }
+
+    .post-container .post-title {
+        font-size: 1.5rem;
+    }
+}

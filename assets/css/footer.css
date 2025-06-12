@@ -1,49 +1,40 @@
+@import url("/assets/css/root.css");
+
 /* ------------------------------------------------------------- */
 /* Footer */
 /* ------------------------------------------------------------- */
-.footer {
+.footer.container {
     align-items: center;
-    background-color: #1a1a1a;
+    background-color: var(--bg-color);
+    border-top: 1px solid var(--terminal-border);
     box-sizing: border-box;
     color: var(--text-light);
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Alinha itens em coluna no footer */
+    font-family: var(--font-secondary);
     justify-content: center;
-    left: 0;
-    padding: 20px 0;
-    position: relative;
+    padding: 20px;
     text-align: center;
-    width: 100%;
-    z-index: 1000;
+    width: 100vw;
 }
 
 .footer p {
-    color: var(--text-light);
-    font-size: 1rem;
-    margin: 0;
+    margin-bottom: 10px; /* Espaço entre o texto e os ícones */
 }
 
 .footer .social {
-    align-items: center;
     display: flex;
     justify-content: center;
-    margin-top: 15px;
+    align-items: center;
 }
 
 .footer .social a {
-    color: var(--text-light);
-    display: inline-block;
-    font-size: 1.8rem;
+    color: var(--second-color); /* Cor dos ícones sociais */
+    font-size: 2rem; /* Tamanho dos ícones */
     margin: 0 15px;
-    transition: color var(--transition-duration) var(--transition-timing),
-                transform var(--transition-duration) var(--transition-timing);
+    transition: color var(--transition-duration) var(--transition-timing);
 }
 
 .footer .social a:hover {
-    color: var(--font-color);
-    transform: scale(1.2);
-}
-
-.footer .social i {
-    vertical-align: middle;
+    color: var(--title-color); /* Efeito hover nos ícones */
 }
